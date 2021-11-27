@@ -1,5 +1,20 @@
-body header {
-  position: sticky;
-  top: 0;
-  width: 100%;
+$yellow: #FFCC00;
+
+// main navbar styles
+body {
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #a3d0db;
+  }
+
+  div {
+    display: inline;
+  }
+
+
+
+
 }
+
