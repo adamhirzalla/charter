@@ -16,8 +16,8 @@ const db = new Pool(dbParams);
 db.connect();
 
 module.exports = {
-  query: (text, params) => {
-    return db.query(text, params);
+  query: (text, params, callback) => {
+    return db.query(text, params, callback);
   },
 };
 
