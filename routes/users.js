@@ -7,10 +7,12 @@
 
 const express = require('express');
 const router  = express.Router();
+const db = require('../server');
 
-module.exports = (db) => {
+module.exports = () => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+    const query = `SELECT * FROM users`;
+    db.query(query)
       .then(data => {
         const users = data.rows;
         res.json({ users });
@@ -21,5 +23,27 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/:id", (req, res) => {
+    const query = `SELECT * FROM users WHERE id = $1`;
+    const values = [req.params.id];
+    db.query(query, values)
+      .then(data => {
+        const users = data.rows;
+        res.json({ users });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+
+
+
+
+
+
   return router;
 };

@@ -14,6 +14,12 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+module.exports = {
+  query: (text, params) => {
+    return db.query(text, params);
+  },
+};
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -40,8 +46,8 @@ const mapsRoutes = require("./routes/maps");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/users", usersRoutes(db));
-app.use("/maps", mapsRoutes(db));
+app.use("/users", usersRoutes());
+app.use("/maps", mapsRoutes());
 // Note: mount other resources here, using the same pattern above
 
 // Home page
