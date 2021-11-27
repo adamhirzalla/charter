@@ -1,7 +1,5 @@
 /* eslint-disable func-style */
 /* eslint-disable no-undef */
-// map-id: 93b06d228f001f87
-// api-key: AIzaSyA2JE3t0K1wOr-7PzidLQpqCfON6CFflA0
 
 let map;
 
