@@ -1,0 +1,50 @@
+$blue: #0075BE;
+$yellow: #FFCC00;
+$red: #FB1B1B;
+$font-pokemon: 'Pokemon Solid', cursive;
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*, *::after, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+}
+
+h2 {
+  font-family: $font-pokemon;
+  text-align: center;
+  font-size: 2rem;
+  padding: 0 3rem;
+  margin: 1rem ;
+  letter-spacing: 0.05em;
+  border: 5px double $red;
+  width: 70vw;
+  -webkit-text-stroke: 1px $blue;
+  -webkit-text-fill-color: $yellow;
+}
+ #map {
+   height: 70vh;
+   width: 70vw;
+   margin-left: auto;
+   margin-right: auto;
+ }
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gm-style {
+  .gm-style-iw {
+  color: black;
+  font-weight: bold;
+  }
+}
