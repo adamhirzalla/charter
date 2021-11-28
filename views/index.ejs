@@ -11,11 +11,13 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <!-- Internal Scripts -->
-  <script type="text/javascript" src="/scripts/pinListeners.js"></script>
+  <script type="text/javascript" src="/scripts/mapListener.js"></script>
   <script type="text/javascript" src="/scripts/createMap.js"></script>
+  <script type="text/javascript" src="/scripts/drawMaps.js"></script>
   <script type="text/javascript" src="/scripts/main.js"></script>
 
   <!-- External Scripts -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%- apiKey %>&callback=initMap" async></script>
   <!-- These scripts are necessary for bootstrap functionality -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -37,8 +39,6 @@
   <link rel="stylesheet" href="./styles/style.css" type="text/css">
   <link rel="stylesheet" href="./styles/navbar.css" type="text/css">
 
-
-
 </head>
 
 <body>
@@ -48,26 +48,14 @@
 
   <div class="flex">
     <h2>WELCOME to PokeMap! Let's get rolling!</h2>
-  </div>
-  <!-- <div id="map" class="flex">
 
-  </div> -->
-
-  <div class="card flex" style="width: 50vw; height: 50vw;">
-    <div id="map" class="flex">
-    <!-- Map goes here -->
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
   </div>
 
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap"
-  async
-></script>
+<div id="maps" class="flex">
+<!-- maps drawn here depending on logged user-->
+</div>
+
+
 </body>
 
 </html>

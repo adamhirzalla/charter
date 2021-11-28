@@ -24,13 +24,96 @@ module.exports = () => {
       });
   });
 
-  router.get("/:id", (req, res) => {
+  router.get("/:user", (req, res) => {
+    const user = req.params.user;
     const query = `SELECT * FROM users WHERE id = $1`;
-    const values = [req.params.id];
+    const values = [user];
     db.query(query, values)
       .then(data => {
-        const users = data.rows;
-        res.json({ users });
+        const user = data.rows[0];
+        res.json({ user });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/:user/maps", (req, res) => {
+    const user = req.params.user;
+    const query = `
+    SELECT maps.* FROM maps
+    JOIN users ON users.id = user_id
+    WHERE user_id = $1
+    ;`;
+    const values = [user];
+    db.query(query, values)
+      .then(data => {
+        const maps = data.rows;
+        res.json({ maps });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/:user/maps/:map", (req, res) => {
+    const [user, map] = [req.params.user, req.params.map];
+    const query = `
+    SELECT maps.* FROM maps
+    JOIN users ON users.id = user_id
+    WHERE users.id = $1 AND maps.id = $2
+    ;`;
+    const values = [user, map];
+    db.query(query, values)
+      .then(data => {
+        const map = data.rows[0];
+        res.json({ map });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/:user/maps/:map/pins", (req, res) => {
+    const [user, map] = [req.params.user, req.params.map];
+    const query = `
+    SELECT pins.* FROM pins
+    JOIN users ON users.id = pins.user_id
+    JOIN maps ON maps.id = map_id
+    WHERE pins.user_id = $1 AND map_id = $2
+    ;`;
+    const values = [user, map];
+    db.query(query, values)
+      .then(data => {
+        const pins = data.rows;
+        res.json({ pins });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/:user/maps/:map/pins/:pin", (req, res) => {
+    const [user, map, pin] = [req.params.user, req.params.map, req.params.pin];
+    const query = `
+    SELECT pins.* FROM pins
+    JOIN users ON users.id = pins.user_id
+    JOIN maps ON maps.id = map_id
+    WHERE pins.user_id = $1 AND map_id = $2 AND pins.id = $3
+    ;`;
+    const values = [user, map, pin];
+    db.query(query, values)
+      .then(data => {
+        const pin = data.rows[0];
+        res.json({ pin });
       })
       .catch(err => {
         res

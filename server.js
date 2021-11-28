@@ -9,7 +9,6 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 
-
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -37,11 +36,15 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const mapsRoutes = require("./routes/maps");
+const pinsRoutes = require("./routes/pins");
+const apiRoutes = require("./routes/api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes());
 app.use("/maps", mapsRoutes());
+app.use("/pins", pinsRoutes());
+app.use("/api", apiRoutes());
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -51,13 +54,13 @@ app.use("/maps", mapsRoutes());
 app.get("/", (req, res) => {
   const templateVars = {
     apiKey: process.env.API_KEY
-  }
-
+  };
   res.render("index", templateVars);
 });
 
 app.get('/login/:id', (req, res) => {
-  req.session.userID = req.params.id;
+  const user = req.params.id;
+  req.session.userID = user;
   res.redirect('/');
 });
 
