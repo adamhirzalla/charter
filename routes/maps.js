@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../server');
+const db = require('../lib/psql');
 
 module.exports = () => {
   router.get("/", (req, res) => {
@@ -39,7 +39,7 @@ module.exports = () => {
       });
   });
 
-
+  // /maps/1/pins
 
 
 

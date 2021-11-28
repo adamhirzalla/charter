@@ -4,22 +4,11 @@ require("dotenv").config();
 // Web server config
 const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
+const cookieSession = require('cookie-session');
 const express = require("express");
 const morgan = require("morgan");
-const cookieSession = require('cookie-session');
 const app = express();
 
-// PG database client/connection setup
-const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
-const db = new Pool(dbParams);
-db.connect();
-
-module.exports = {
-  query: (text, params, callback) => {
-    return db.query(text, params, callback);
-  },
-};
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
