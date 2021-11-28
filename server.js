@@ -49,7 +49,11 @@ app.use("/maps", mapsRoutes());
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const templateVars = {
+    apiKey: process.env.API_KEY
+  }
+
+  res.render("index", templateVars);
 });
 
 app.get('/login/:id', (req, res) => {
