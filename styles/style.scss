@@ -34,8 +34,9 @@ h2 {
   -webkit-text-fill-color: $yellow;
 }
  #map {
-   height: 70vh;
-   width: 70vw;
+   position: relative;
+   height: 100%;
+   width: 100%;
    margin-left: auto;
    margin-right: auto;
  }
