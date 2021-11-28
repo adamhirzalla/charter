@@ -1,4 +1,4 @@
-INSERT INTO maps (owner_id, title, description, is_public)
+INSERT INTO maps (user_id, title, description, is_public)
 VALUES
 (1, 'Adams Map1', 'SHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESH', true),
 (1, 'Adams Map2', 'SHEEEEEEEEEEEEEEEEEEEEEEEEEEEEEESH', true),
