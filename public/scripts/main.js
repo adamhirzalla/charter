@@ -6,8 +6,8 @@
 function initMap() {
 
   $.ajax({
-    method: 'post',
-    url: `/maps`
+    method: 'get',
+    url: `/api/user`
   }).then(userId => {
     drawMaps(userId);
   });

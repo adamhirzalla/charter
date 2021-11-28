@@ -5,6 +5,9 @@
  */
 
 const drawMaps = function(userId, options) {
+  // convert to function that returns a promise giving back all maps from db for a certain user
+
+  // add an htmlElement as parameter, and drawMaps appends the map to that passed element
   $.ajax({
     method: 'get',
     url: `/users/${userId}/maps`
@@ -12,29 +15,7 @@ const drawMaps = function(userId, options) {
     .then(({maps})=>{
       for (const row of maps) {
         const dbMapId = row.id;
-        // if (!options) {
-        //   options = {
-        //     center: { lat: 49.2827, lng: -123.1207 },
-        //     zoom: 12,
-        //     restrictions: {},
-        //     mapTypeControl: false,
-        //     fullscreenControl: false,
-        //     streetViewControl: false,
-        //     htmlElement: `#map-${dbMapId}`,
-        //   };
-        // }
-        let {
-          zoom, restrictions, mapId, mapTypeControl, fullscreenControl, streetViewControl, center, htmlElement
-        } = options;
-        center = center || { lat: 49.2827, lng: -123.1207 };
-        zoom = zoom || 12;
-        restrictions = restrictions || {};
-        mapTypeControl = mapTypeControl || false;
-        fullscreenControl = fullscreenControl || false;
-        streetViewControl = streetViewControl || false;
-        htmlElement = `#map-${dbMapId}`;
 
-        let map;
         const mapHTML = `
         <div class="card flex" >
           <div id="map-${dbMapId}" class="map flex">
@@ -49,19 +30,10 @@ const drawMaps = function(userId, options) {
         `;
         $('#maps').append(mapHTML);
 
-        map = new google.maps.Map(document.querySelector(htmlElement), {
-          zoom,
-          center,
-          restrictions,
-          mapId,
-          mapTypeControl,
-          fullscreenControl,
-          streetViewControl
-        });
+        const map = createMap(dbMapId);
         //run drawPins(map, mapId) will query select all nesscary pins to the supplied map
         //object
-
-        $(map).on('click', placeMarker(map));
+        $(map).on('click', mapListener.attachMarker(map));
       }
     });
 };
