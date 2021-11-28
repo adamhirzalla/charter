@@ -1,14 +1,18 @@
-$(document).ready(function () {
-  var script = document.createElement('script');
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDOP0Ldl0bxMH2NTDlWDEiyONO5rnUd8m8&callback=initMap`;
+$(document).ready(function() {
+  let script = document.createElement('script');
+  // script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDOP0Ldl0bxMH2NTDlWDEiyONO5rnUd8m8&callback=initMap`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA2JE3t0K1wOr-7PzidLQpqCfON6CFflA0&callback=initMap`;
   script.async = true;
 
   // Attach your callback function to the `window` object
-  window.initMap = function () {
+  window.initMap = function() {
     const options = {
-      // latLng: { lat: -25.363, lng: 131.044 },
+      // center: { lat: -25.363, lng: 131.044 },
       htmlElement: '#map',
       mapId: '93b06d228f001f87',
+      mapTypeControl: false,
+      fullscreenControl: false,
+      streetViewControl: false
       // zoom: 4,
       // restrictions: {
       //   latLngBounds: {
@@ -22,8 +26,7 @@ $(document).ready(function () {
     };
 
     const map = createMap(1,options);
-    console.log(map);
-    const mapClickListener = attachPinPlacementListener(map);
+    const mapClickListener = placePinListener(map);
 
   };
 

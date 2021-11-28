@@ -44,7 +44,8 @@ function initMap() {
       31
     ],
   ];
-
+  // (map, markers, size options) returns marker with icon {marker1,marker2,...}
+  // createInfoWindow -> (marker, content) creates and returns infowindow for that marker
   for (const currentMarker of markers) {
     let marker = new google.maps.Marker({
       position: { lat: currentMarker[1], lng: currentMarker[2] },

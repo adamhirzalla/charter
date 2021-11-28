@@ -7,3 +7,4 @@ CREATE TABLE pins (
   lat DECIMAL NOT NULL,
   description TEXT NOT NULL
 );
+-- icon
