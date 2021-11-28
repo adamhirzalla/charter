@@ -53,7 +53,7 @@
 
   </div> -->
 
-  <div class="card flex" style="width: 20vw;">
+  <div class="card flex" style="width: 50vw; height: 50vw;">
     <div id="map" class="flex">
     <!-- Map goes here -->
     </div>
@@ -63,6 +63,11 @@
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
+
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap"
+  async
+></script>
 </body>
 
 </html>
