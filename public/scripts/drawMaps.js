@@ -4,7 +4,7 @@
  * is attached to the map object as map.dbMapId
  */
 
-window.drawMaps = function(userId, options) {
+const drawMaps = function(userId, options) {
   $.ajax({
     method: 'get',
     url: `/users/${userId}/maps`
@@ -12,17 +12,17 @@ window.drawMaps = function(userId, options) {
     .then(({maps})=>{
       for (const row of maps) {
         const dbMapId = row.id;
-        if (!options) {
-          options = {
-            center: { lat: 49.2827, lng: -123.1207 },
-            zoom: 12,
-            restrictions: {},
-            mapTypeControl: false,
-            fullscreenControl: false,
-            streetViewControl: false,
-            htmlElement: `#map-${dbMapId}`,
-          };
-        }
+        // if (!options) {
+        //   options = {
+        //     center: { lat: 49.2827, lng: -123.1207 },
+        //     zoom: 12,
+        //     restrictions: {},
+        //     mapTypeControl: false,
+        //     fullscreenControl: false,
+        //     streetViewControl: false,
+        //     htmlElement: `#map-${dbMapId}`,
+        //   };
+        // }
         let {
           zoom, restrictions, mapId, mapTypeControl, fullscreenControl, streetViewControl, center, htmlElement
         } = options;

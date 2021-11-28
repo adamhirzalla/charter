@@ -1,18 +1,19 @@
+/* eslint-disable func-style */
 /* eslint-disable no-undef */
-$(function() {
+// $(function() {
 
-  // Attach your callback function to the `window` object
-  window.initMap = function() {
+// Attach your callback function to the `window` object
+function initMap() {
 
-    $.ajax({
-      method: 'post',
-      url: `/maps`
-    }).then(userId => {
-      drawMaps(userId);
-    });
-  };
+  $.ajax({
+    method: 'post',
+    url: `/maps`
+  }).then(userId => {
+    drawMaps(userId);
+  });
+}
 
-});
+// });
 
 /*
 const options1 = {
