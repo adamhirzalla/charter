@@ -14,19 +14,17 @@ html {
 }
 
 // Ensures all maps stay inside their containers!!
-.map {
+.map-container {
   position: relative;
   height: 100%;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .sticky {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  max-height: 100vh;
+  height: 100vh;
   position: sticky;
   top: 0;
   z-index: 1;
