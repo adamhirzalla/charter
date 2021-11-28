@@ -67,6 +67,7 @@ function initMap() {
         map,
         shouldFocus: false,
       });
+      console.log(marker.position.toJSON());
     });
   }
 
