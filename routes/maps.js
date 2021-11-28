@@ -24,13 +24,14 @@ module.exports = () => {
       });
   });
 
-  router.get("/:id", (req, res) => {
+  router.get("/:map", (req, res) => {
+    const mapId = req.params.map;
     const query = `SELECT * FROM maps WHERE id = $1`;
-    const values = [req.params.id];
+    const values = [mapId];
     db.query(query, values)
       .then(data => {
-        const maps = data.rows;
-        res.json({ maps });
+        const map = data.rows[0];
+        res.json({ map });
       })
       .catch(err => {
         res
@@ -38,12 +39,6 @@ module.exports = () => {
           .json({ error: err.message });
       });
   });
-
-  // /maps/1/pins
-
-
-
-
 
   return router;
 };
