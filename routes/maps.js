@@ -40,5 +40,11 @@ module.exports = () => {
       });
   });
 
+  // just testing
+  router.post("/", (req, res) => {
+    const user = req.session.userID;
+    res.send(user);
+  });
+
   return router;
 };
