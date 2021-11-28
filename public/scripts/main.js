@@ -1,8 +1,5 @@
 $(document).ready(function() {
   let script = document.createElement('script');
-  // script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDOP0Ldl0bxMH2NTDlWDEiyONO5rnUd8m8&callback=initMap`;
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA2JE3t0K1wOr-7PzidLQpqCfON6CFflA0&callback=initMap`;
-  script.async = true;
 
   // Attach your callback function to the `window` object
   window.initMap = function() {
