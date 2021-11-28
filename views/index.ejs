@@ -47,8 +47,7 @@
   <!-- Navbar ENDS -->
 
 
-
-
+<main class='grid'>
   <div class="sticky">
     <div class="card flex" style="width: 30em; height: 25em;">
       <div id="map" class="map flex">
@@ -64,7 +63,7 @@
   <!-- List of small map cards -->
   <section class="maps">
     <div class="card flex" style="width: 30em; height: 25em;">
-      <div id="map" class="map flex">
+      <div id="map" class="map">
       <!-- Map goes here -->
       </div>
       <div class="card-body text-dark">
@@ -103,6 +102,11 @@
       </div>
     </div>
   </section>
+</main>
+
+
+
+
 
   <script
   src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap"

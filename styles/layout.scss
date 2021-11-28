@@ -25,11 +25,16 @@ html {
 .sticky {
   display: flex;
   align-items: center;
-  margin-top: auto 0;
-  min-height: 100vh;
+  margin-top: 0 auto;
+  max-height: 100vh;
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 //TODO: 
