@@ -51,13 +51,13 @@ app.use("/maps", mapsRoutes());
 app.get("/", (req, res) => {
   const templateVars = {
     apiKey: process.env.API_KEY
-  }
-
+  };
   res.render("index", templateVars);
 });
 
 app.get('/login/:id', (req, res) => {
-  req.session.userID = req.params.id;
+  const user = req.params.id;
+  req.session.userID = user;
   res.redirect('/');
 });
 
