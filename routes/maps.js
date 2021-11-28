@@ -6,8 +6,8 @@
  */
 
 const express = require('express');
-const router  = express.Router();
 const db = require('../lib/psql');
+const router  = express.Router();
 
 module.exports = () => {
   router.get("/", (req, res) => {
@@ -38,12 +38,6 @@ module.exports = () => {
           .status(500)
           .json({ error: err.message });
       });
-  });
-
-  // just testing
-  router.post("/", (req, res) => {
-    const user = req.session.userID;
-    res.send(user);
   });
 
   return router;

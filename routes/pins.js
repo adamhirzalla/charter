@@ -6,8 +6,8 @@
  */
 
 const express = require('express');
-const router  = express.Router();
 const db = require('../lib/psql');
+const router  = express.Router();
 
 module.exports = () => {
   router.get("/", (req, res) => {
