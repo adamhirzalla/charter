@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const placePinListener = (map) => {
+const placeMarker = (map) => {
   let marker = null;
 
   const mapClick = map.addListener("click", (event) => {
