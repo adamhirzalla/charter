@@ -15,7 +15,7 @@ module.exports = () => {
     db.query(query)
       .then(data => {
         const maps = data.rows;
-        res.json({ maps });
+        res.send(maps);
       })
       .catch(err => {
         res
@@ -31,7 +31,26 @@ module.exports = () => {
     db.query(query, values)
       .then(data => {
         const map = data.rows[0];
-        res.json({ map });
+        res.send(map);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.get("/:map/pins", (req, res) => {
+    const mapId = req.params.map;
+    const query = `
+    SELECT pins.* FROM pins
+    JOIN maps ON maps.id = map_id
+    WHERE map_id = $1`;
+    const values = [mapId];
+    db.query(query, values)
+      .then(data => {
+        const pins = data.rows;
+        res.send(pins);
       })
       .catch(err => {
         res

@@ -1,4 +1,4 @@
-INSERT INTO pins (map_id, user_id, long, lat, icon, description)
+INSERT INTO pins (map_id, user_id, lat, long, icon, description)
 VALUES
 (1, 1, 45.42306195297514, -75.68680077244888, './images/icons/poke-marker.svg', 'This is a cool pin'),
 (1, 1, 45.41821228984041, -75.68311005285348, './images/icons/pokeball.svg', 'Great pin desc'),

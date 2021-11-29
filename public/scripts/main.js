@@ -3,15 +3,31 @@
 // $(function() {
 
 // Attach your callback function to the `window` object
-function initMap() {
+function userMaps(options) {
+  getUserMaps(options)
+    .then(maps => {
+      drawMaps(maps);
+    })
+    .catch(e => console.log(e));
 
-  $.ajax({
-    method: 'get',
-    url: `/api/user`
-  }).then(userId => {
-    drawMaps(userId);
-  });
+  // $.ajax({
+  //   method: 'get',
+  //   url: `/api/user`
+  // })
+  //   .then(userId => {
+
+  //     drawMaps(userId);
+  //   });
 }
+
+function allMaps(options) {
+  getAllMaps(options)
+    .then(maps => {
+      drawMaps(maps);
+    })
+    .catch(e => console.log(e));
+}
+
 
 // });
 

@@ -15,7 +15,7 @@ module.exports = () => {
     db.query(query)
       .then(data => {
         const users = data.rows;
-        res.json({ users });
+        res.send(users);
       })
       .catch(err => {
         res
@@ -31,7 +31,7 @@ module.exports = () => {
     db.query(query, values)
       .then(data => {
         const user = data.rows[0];
-        res.json({ user });
+        res.send(user);
       })
       .catch(err => {
         res
@@ -51,7 +51,7 @@ module.exports = () => {
     db.query(query, values)
       .then(data => {
         const maps = data.rows;
-        res.json({ maps });
+        res.send(maps);
       })
       .catch(err => {
         res
@@ -71,7 +71,7 @@ module.exports = () => {
     db.query(query, values)
       .then(data => {
         const map = data.rows[0];
-        res.json({ map });
+        res.send(map);
       })
       .catch(err => {
         res
@@ -92,7 +92,7 @@ module.exports = () => {
     db.query(query, values)
       .then(data => {
         const pins = data.rows;
-        res.json({ pins });
+        res.send(pins);
       })
       .catch(err => {
         res
@@ -113,7 +113,7 @@ module.exports = () => {
     db.query(query, values)
       .then(data => {
         const pin = data.rows[0];
-        res.json({ pin });
+        res.send(pin);
       })
       .catch(err => {
         res

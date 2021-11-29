@@ -11,13 +11,16 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <!-- Internal Scripts -->
+  <script type="text/javascript" src="/scripts/network.js"></script>
+  <script type="text/javascript" src="/scripts/drawPins.js"></script>
   <script type="text/javascript" src="/scripts/mapListener.js"></script>
   <script type="text/javascript" src="/scripts/createMap.js"></script>
   <script type="text/javascript" src="/scripts/drawMaps.js"></script>
   <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/scripts/components/search-maps.js"></script>
 
   <!-- External Scripts -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%- apiKey %>&callback=userMaps" async></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=allMaps" async></script>
   <!-- These scripts are necessary for bootstrap functionality -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -47,7 +50,6 @@
   <!-- Navbar -->
   <%- include('./partials/_navbar'); %>
   <!-- Navbar ENDS -->
-
 
 <main class='grid'>
 
@@ -88,6 +90,7 @@
     but please leave the classes alone
     As they have styles attached to them -->
 
+
     <!-- <div class="card map-card" >
       <div id="map" class="map-container">
       Map goes here
@@ -106,17 +109,7 @@
         <h5 class="card-title">Map Title</h5>
         <p class="card-text">Map Description</p>
       </div>
-    </div>
-
-    <div class="card map-card" >
-      <div id="map" class="map-container">
-      Map goes here
-      </div>
-      <div class="card-body text-dark">
-        <h5 class="card-title">Map Title</h5>
-        <p class="card-text">Map Description</p>
-      </div>
-    </div>-->
+    </div> -->
 
   </section>
 </main>
