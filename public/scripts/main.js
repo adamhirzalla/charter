@@ -3,57 +3,47 @@
 // $(function() {
 
 // Attach your callback function to the `window` object
-function userMaps(options) {
-  getUserMaps(options)
+function userMaps() {
+  getUserMaps()
     .then(maps => {
       drawMaps(maps);
     })
     .catch(e => console.log(e));
 }
 
-function playGround(options) {
-  getUserMaps(options)
-    .then(maps => {
-      const googleMaps = drawMaps(maps);
-      $(`#edit-1`).on('click',null,googleMaps,(event)=>{
-        $(`#edit-1`).unbind('click');
-          let marker = mapListener.attachMarker(googleMaps[0]);
-          console.log(marker);
-        $('#confirm-1').on('click',null,marker,(event)=>{
-          console.log(event.data);
-
-        })
-      })
+function editMap() {
+  const url = window.location.href;
+  const split = url.split('/');
+  const mapId = split[split.length - 1];
+  getMap(mapId)
+    .then(map => {
+      const googleMaps = createMap(map);
+      const edit = (googleMaps) => {
+        $(`#edit-${mapId}`).on('click', () => { // attach listner to map when edit is clicked
+          $(`#edit-${mapId}`).off('click'); // remove edit listner so can't be repeated
+          const { marker, markerListener } = mapListener.attachMarker(googleMaps);
+          $(`#confirm-${mapId}`).on('click', () => { //attach listner to confirm
+            google.maps.event.removeListener(markerListener); //remove listner on map so we can't edit after confirming
+            $(`#confirm-${mapId}`).off('click'); //remove click
+            marker.setDraggable(false);
+            console.log(marker.getPosition().toJSON());
+            // wait for form submission
+            // make ajax post to /users/:user/maps/:map/pins
+            // that will take care of sql connectio
+            edit(googleMaps);
+          });
+        });
+      };
+      edit(googleMaps);
     })
     .catch(e => console.log(e));
 }
 
-// initilize all user maps -> attach a listener
 
-function allMaps(options) {
-  getAllMaps(options)
+function allMaps() {
+  getAllMaps()
     .then(maps => {
       drawMaps(maps);
     })
     .catch(e => console.log(e));
 }
-
-
-// });
-
-/*
-const options1 = {
-  center: { lat: -25.363, lng: 131.044 },
-  mapId: '93b06d228f001f87',
-  mapTypeControl: false,
-  fullscreenControl: false,
-  streetViewControl: false
-};
-
-const options2 = {
-  center: { lat: 49.2827, lng: -123.1207 },
-  mapId: '93b06d228f001f87',
-  mapTypeControl: false,
-  fullscreenControl: false,
-  streetViewControl: false
-}; */

@@ -20,7 +20,7 @@
   <script type="text/javascript" src="/scripts/components/search-maps.js"></script>
 
   <!-- External Scripts -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%- apiKey %>&callback=playGround" async></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%- apiKey %>&callback=editMap" async></script>
   <!-- These scripts are necessary for bootstrap functionality -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -39,10 +39,9 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <!-- Map styles live here -->
-  <link rel="stylesheet" href="./styles/style.css" type="text/css">
-  <link rel="stylesheet" href="./styles/navbar.css" type="text/css">
-  <link rel="stylesheet" href="./styles/cards.css" type="text/css">
-
+  <link rel="stylesheet" href="/styles/style.css" type="text/css">
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css">
+  <link rel="stylesheet" href="/styles/cards.css" type="text/css">
 
 </head>
 
@@ -52,41 +51,39 @@
   <!-- Navbar ENDS -->
 
 
-  <main class='grid'>
+<main class='grid'>
 
-    <!-- This is where the featured map goes -->
-    <div class="sticky">
-      <div class="card map-card">
-        <div id="NOTmap" class="map-container">
-        <!-- Map goes here -->
-        </div>
-        <div class="card-body text-dark">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+  <!-- This is where the featured map goes -->
+  <div class="sticky">
+    <div class="card map-card">
+      <div id="NOTmap" class="map-container">
+      <!-- Map goes here -->
+      </div>
+      <div class="card-body text-dark">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
+  </div>
 
-    <!-- List of small map cards -->
-    <section id="maps" class="maps">
-      <!-- Maps should be rendered inside this section -->
-      <% if (!maps.length) { %>
-        <p> No maps exist</p>
-      <%} else { %>
-        <% for (const map of maps) { %>
-        <div class="card map-card" >
-          <div id="map-<%=map.id%>" class="map-container">
-
-          </div>
-          <div class="card-body text-dark">
-            <h5 class="card-title"><%=map.title%></h5>
-            <p class="card-text"><%=map.description%></p>
-          </div>
-          <button id="edit-<%=map.id%>" type="submit">Edit</button>
-          <button id="confirm-<%=map.id%>" type="submit">Confirm</button>
+  <!-- List of small map cards -->
+  <section id="maps" class="maps">
+    <!-- Maps should be rendered inside this section -->
+    <% if (!map) { %>
+      <p> Map doesnt belong to you</p>
+    <%} else { %>
+      <div class="card map-card" >
+        <div id="map-<%=map.id%>" class="map-container">
         </div>
-        <% } %>
-      <% } %>
+        <div class="card-body text-dark">
+          <h5 class="card-title"><%=map.title%></h5>
+          <p class="card-text"><%=map.description%></p>
+        </div>
+        <button id="edit-<%=map.id%>" type="submit">Edit</button>
+        <button id="confirm-<%=map.id%>" type="submit">Confirm</button>
+      </div>
+    <% } %>
+
 
   </section>
 </main>

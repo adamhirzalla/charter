@@ -31,7 +31,6 @@ const drawPins = (pins, map) => {
 };
 
 
-
 // function toggleBounce() {
 // //   if (marker.getAnimation() !== null) {
 // //     marker.setAnimation(null);

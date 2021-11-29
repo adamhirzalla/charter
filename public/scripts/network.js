@@ -25,3 +25,10 @@ function getAllMapPins(mapId) {
     url: `/maps/${mapId}/pins`
   });
 }
+
+function getMap(mapId) {
+  return $.ajax({
+    method: 'get',
+    url: `/api/userMap/${mapId}`
+  });
+}

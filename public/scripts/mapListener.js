@@ -2,21 +2,16 @@
 const mapListener = {
 
   attachMarker: function(map) {
-    let marker = null;
+    let marker = new google.maps.Marker();
 
     const markerListener = map.addListener("click", (event) => {
-      if (!marker) {
-        marker = new google.maps.Marker({
-          position: event.latLng.toJSON(),
-          map,
-          draggable: true,
-          animation: google.maps.Animation.DROP
-        });
-      } else {
-        marker.setPosition(event.latLng.toJSON());
-      }
+      marker.setPosition(event.latLng.toJSON());
+      marker.setMap(map);
+      marker.setDraggable(true);
+      marker.setAnimation(google.maps.Animation.DROP);
+
     });
-    return marker;
+    return {markerListener,marker};
   },
 
 
