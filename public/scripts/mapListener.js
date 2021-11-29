@@ -16,6 +16,8 @@ const mapListener = {
         marker.setPosition(event.latLng.toJSON());
       }
     });
-    return {markerListener, marker};
-  }
+    return marker;
+  },
+
+
 };

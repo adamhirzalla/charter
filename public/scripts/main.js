@@ -9,16 +9,26 @@ function userMaps(options) {
       drawMaps(maps);
     })
     .catch(e => console.log(e));
-
-  // $.ajax({
-  //   method: 'get',
-  //   url: `/api/user`
-  // })
-  //   .then(userId => {
-
-  //     drawMaps(userId);
-  //   });
 }
+
+function playGround(options) {
+  getUserMaps(options)
+    .then(maps => {
+      const googleMaps = drawMaps(maps);
+      $(`#edit-1`).on('click',null,googleMaps,(event)=>{
+        $(`#edit-1`).unbind('click');
+          let marker = mapListener.attachMarker(googleMaps[0]);
+          console.log(marker);
+        $('#confirm-1').on('click',null,marker,(event)=>{
+          console.log(event.data);
+
+        })
+      })
+    })
+    .catch(e => console.log(e));
+}
+
+// initilize all user maps -> attach a listener
 
 function allMaps(options) {
   getAllMaps(options)
