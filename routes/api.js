@@ -23,7 +23,7 @@ module.exports = () => {
   });
 
   router.get("/allMaps", (req, res) => {
-    db.getAllMaps()
+    db.getAllMaps(req.query)
       .then(maps => res.send(maps));
   });
 
