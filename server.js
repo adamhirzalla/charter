@@ -7,6 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const cookieSession = require('cookie-session');
 const express = require("express");
 const morgan = require("morgan");
+const db = require("./db/queries");
 const app = express();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -51,16 +52,43 @@ app.use("/api", apiRoutes());
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+
 app.get("/", (req, res) => {
-  const templateVars = {
-    apiKey: process.env.API_KEY
-  };
-  res.render("index", templateVars);
+  const userId = req.session.userID;
+  db.getAllMaps()
+    .then(maps => {
+      const templateVars = {
+        userId,
+        apiKey: process.env.API_KEY,
+        maps
+      };
+      res.render("home", templateVars);
+    });
 });
+
+
+app.get("/profile", (req, res) => {
+  const userId = req.session.userID;
+  db.getAllUserMaps(userId)
+    .then(maps => {
+      const templateVars = {
+        userId,
+        apiKey: process.env.API_KEY,
+        maps
+      };
+      res.render("profile", templateVars);
+    });
+});
+
 
 app.get('/login/:id', (req, res) => {
   const user = req.params.id;
   req.session.userID = user;
+  res.redirect('/');
+});
+
+app.get('/logout', (req, res) => {
+  req.session.userID = null;
   res.redirect('/');
 });
 

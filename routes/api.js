@@ -7,13 +7,24 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../lib/psql');
+const db = require("../db/queries");
 
 module.exports = () => {
 
-  router.get("/user", (req, res) => {
+  router.get("/userId", (req, res) => {
     const user = req.session.userID;
     res.send(user);
+  });
+
+  router.get("/allUserMaps", (req, res) => {
+    const user = req.session.userID;
+    db.getAllUserMaps(user)
+      .then(maps => res.send(maps));
+  });
+
+  router.get("/allMaps", (req, res) => {
+    db.getAllMaps()
+      .then(maps => res.send(maps));
   });
 
   return router;
