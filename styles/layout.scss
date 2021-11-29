@@ -6,13 +6,54 @@
 body,
 html {
   margin: 0;
-  height: 100%;
 }
 
 html {
   box-sizing: border-box;
   font-size: 100%;
 }
+
+// Ensures all maps stay inside their containers!!
+.map-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+// Any sticky elements to left of the page
+.grid {
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+
+  .sticky {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  section.maps {
+    margin-top: 100px;
+
+    // Spacing between maps on right column
+    .map-card {
+      margin-bottom: 2em;
+    }
+  }
+}
+
+
+
+//TODO: 
+// Make 2 columns
+// left column stikcy 
+// right column scrollable
+// create card elements
+
+
 
 // body {
 //   display: flex;

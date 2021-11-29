@@ -6,10 +6,11 @@ $font-pokemon: 'Pokemon Solid', cursive;
 body {
   // main navbar styles
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: #a3d0db;
+    z-index: 2;
 
     .navbar-brand {
       font-size: 2rem;
