@@ -80,6 +80,19 @@ app.get("/profile", (req, res) => {
     });
 });
 
+app.get("/playground", (req, res) => {
+  const userId = req.session.userID;
+  db.getAllUserMaps(userId)
+    .then(maps => {
+      const templateVars = {
+        userId,
+        apiKey: process.env.API_KEY,
+        maps
+      };
+      res.render("index", templateVars);
+    });
+});
+
 
 app.get('/login/:id', (req, res) => {
   const user = req.params.id;

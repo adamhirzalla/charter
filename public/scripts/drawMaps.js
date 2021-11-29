@@ -9,11 +9,11 @@ const drawMaps = function(maps, options) {
 
   for (const map of maps) {
     const googleMap = createMap(map, options);
-    $(googleMap).on('click', mapListener.attachMarker(googleMap));
+    mapListener.attachMarker(googleMap);
   }
 
 
-
+  // $(googleMap) doesnt actually work but still looks like it would
   // convert to function that returns a promise giving back all maps from db for a certain user
   // add an htmlElement as parameter, and drawMaps appends the map to that passed element
   // $.ajax({
