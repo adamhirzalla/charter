@@ -3,15 +3,37 @@
 // $(function() {
 
 // Attach your callback function to the `window` object
-function initMap() {
-
+function userMaps() {
   $.ajax({
     method: 'get',
-    url: `/api/user`
-  }).then(userId => {
-    drawMaps(userId);
-  });
+    url: `/api/allUserMaps`
+  })
+    .then(maps => {
+      drawMaps(maps);
+    })
+    .catch(e => console.log(e));
+
+  // $.ajax({
+  //   method: 'get',
+  //   url: `/api/user`
+  // })
+  //   .then(userId => {
+
+  //     drawMaps(userId);
+  //   });
 }
+
+function allMaps() {
+  $.ajax({
+    method: 'get',
+    url: '/api/allMaps'
+  })
+    .then(maps => {
+      drawMaps(maps);
+    })
+    .catch(e => console.log(e));
+}
+
 
 // });
 
