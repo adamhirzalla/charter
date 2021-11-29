@@ -1,12 +1,18 @@
+/* eslint-disable camelcase */
 const db = require('../lib/psql');
 
-const getAllMaps = (options, limit = 5) => {
-  const query = `
-  SELECT * FROM maps
-  ;`;
-  // const params = [email.toLowerCase(), email.toUpperCase()];
+const getAllMaps = (options = {}, limit = 5) => {
+  let {id, user_id, title, description, is_public} = options;
+  let query = `SELECT * FROM maps `;
+  const values = [];
+
+  if (title) {
+    values.push(`%${title}%`);
+    query += `WHERE LOWER(title) LIKE LOWER($${values.length}) `;
+  }
+
   return db
-    .query(query)
+    .query(query, values)
     .then(result => result.rows)
     .catch(err => console.log(err.message));
 };
@@ -24,44 +30,23 @@ const getAllUserMaps = (userId, options, limit = 5) => {
     .catch(err => console.log(err.message));
 };
 
-// const getAllUserMaps = (userId, options, limit = 5) => {
-//   const query = `
-//   SELECT *
-//   FROM users
-//   WHERE email IN ($1, $2)
-//   ;`;
-//   const params = [email.toLowerCase(), email.toUpperCase()];
-//   return db.query(query, params)
-//     .then(result => result.rows.length > 0 ? result.rows[0] : null)
-//     .catch(err => console.log(err.message));
-// }
+const getAllMapPins = (mapId, options) => {
+  const query = `
+    SELECT pins.* FROM pins
+    JOIN maps ON maps.id = map_id
+    WHERE map_id = $1
+    ;`;
+  const values = [mapId];
+  return db
+    .query(query, values)
+    .then(result => result.rows)
+    .catch(err => console.log(err.message));
+};
 
-// const getAllMaps = (options, limit = 5) => {
-//   const query = `
-//   SELECT *
-//   FROM users
-//   WHERE email IN ($1, $2)
-//   ;`;
-//   const params = [email.toLowerCase(), email.toUpperCase()];
-//   return db.query(query, params)
-//     .then(result => result.rows.length > 0 ? result.rows[0] : null)
-//     .catch(err => console.log(err.message));
-// }
-
-// const getAllMaps = (options, limit = 5) => {
-//   const query = `
-//   SELECT *
-//   FROM users
-//   WHERE email IN ($1, $2)
-//   ;`;
-//   const params = [email.toLowerCase(), email.toUpperCase()];
-//   return db.query(query, params)
-//     .then(result => result.rows.length > 0 ? result.rows[0] : null)
-//     .catch(err => console.log(err.message));
-// }
 
 module.exports = {
   getAllMaps,
   getAllUserMaps,
+  getAllMapPins,
 
 };
