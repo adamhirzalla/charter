@@ -19,10 +19,9 @@ function getAllMaps(params) {
   });
 }
 
-function getAllMapPins(data) {
+function getAllMapPins(mapId) {
   return $.ajax({
     method: 'get',
-    url: '/api/allMapPins',
-    data
+    url: `/maps/${mapId}/pins`
   });
 }
