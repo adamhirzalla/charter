@@ -3,11 +3,8 @@
 // $(function() {
 
 // Attach your callback function to the `window` object
-function userMaps() {
-  $.ajax({
-    method: 'get',
-    url: `/api/allUserMaps`
-  })
+function userMaps(options) {
+  getUserMaps(options)
     .then(maps => {
       drawMaps(maps);
     })
@@ -23,11 +20,8 @@ function userMaps() {
   //   });
 }
 
-function allMaps() {
-  $.ajax({
-    method: 'get',
-    url: '/api/allMaps'
-  })
+function allMaps(options) {
+  getAllMaps(options)
     .then(maps => {
       drawMaps(maps);
     })
