@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 const createMap = function(map) {
   let googleMap = new google.maps.Map(document.querySelector(`#map-${map.id}`), {
     zoom: 12,
@@ -10,7 +11,6 @@ const createMap = function(map) {
   });
   getAllMapPins(map.id)
     .then(pins => {
-      console.log(pins)
       drawPins(pins, googleMap);
     });
   return googleMap;
