@@ -14,6 +14,7 @@ const createMap = function(map, options) {
   });
   getAllMapPins(dbMapId)
     .then(pins => {
+      console.log(pins)
       drawPins(pins, googleMap);
     });
   //run drawPins(map, mapId) will query select all nesscary pins to the supplied map
