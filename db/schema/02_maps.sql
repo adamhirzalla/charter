@@ -5,4 +5,5 @@ CREATE TABLE maps (
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   is_public BOOLEAN DEFAULT true
+  theme VARCHAR(255) DEFAULT 'default'
 );
