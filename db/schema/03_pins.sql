@@ -7,6 +7,6 @@ CREATE TABLE pins (
   lat REAL NOT NULL,
   long REAL NOT NULL,
   icon VARCHAR(255) NOT NULL,
-  description TEXT NOT NULL
-  img VARCHAR(255),
+  description TEXT NOT NULL,
+  img VARCHAR(255)
 );
