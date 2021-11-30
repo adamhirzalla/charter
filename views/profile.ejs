@@ -39,9 +39,9 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <!-- Map styles live here -->
-  <link rel="stylesheet" href="./styles/style.css" type="text/css">
-  <link rel="stylesheet" href="./styles/navbar.css" type="text/css">
-  <link rel="stylesheet" href="./styles/cards.css" type="text/css">
+  <link rel="stylesheet" href="/styles/style.css" type="text/css">
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css">
+  <link rel="stylesheet" href="/styles/cards.css" type="text/css">
 
 
 </head>
@@ -82,44 +82,11 @@
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
         </div>
+        <button id="edit-<%=map.id%>" onclick="location.href = '/edit/<%=map.id%>'" type="submit">Edit</button>
       </div>
       <% } %>
     <% } %>
 
-    <!-- This is an example of a card
-    Feel free to change the id and innerText,
-    but please leave the classes alone
-    As they have styles attached to them -->
-
-    <!-- <div class="card map-card" >
-      <div id="map" class="map-container">
-      Map goes here
-      </div>
-      <div class="card-body text-dark">
-        <h5 class="card-title">Map Title</h5>
-        <p class="card-text">Map Description</p>
-      </div>
-    </div>
-
-    <div class="card map-card" >
-      <div id="map" class="map-container">
-      Map goes here
-      </div>
-      <div class="card-body text-dark">
-        <h5 class="card-title">Map Title</h5>
-        <p class="card-text">Map Description</p>
-      </div>
-    </div>
-
-    <div class="card map-card" >
-      <div id="map" class="map-container">
-      Map goes here
-      </div>
-      <div class="card-body text-dark">
-        <h5 class="card-title">Map Title</h5>
-        <p class="card-text">Map Description</p>
-      </div>
-    </div>-->
 
   </section>
 </main>
