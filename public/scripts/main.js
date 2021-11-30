@@ -23,11 +23,14 @@ function editMap() {
 
       $(`#edit-${mapId}`).on('click', (event) => {
         if (stateController === 0) {
-          console.log('edit:', stateController)
           stateController++;
+          console.log('edit:', stateController)
         }
         if (stateController === 1) {
-          googleMap.addListener("click", (event) => {
+          googleMap.addListener("click", (event) => { //we need to keep reattaching this event because after the pins post
+                                                      //request google maps is redeclared (see the .then after postPins)
+            // this and the last line of this if statment
+            // ensure that submit can only be pressed when the map has been clicked atleast once
             if (stateController === 1 || stateController === 2) {
               console.log('map:', stateController)
               marker.setPosition(event.latLng.toJSON());
@@ -44,8 +47,7 @@ function editMap() {
 
       $(`#pinSubmission`).on(`click`, (event) => {
         if (stateController === 2) {
-          stateController = 3;
-          console.log($('input:checked').val());
+          stateController = 3; //update to 3 so we prevent submit from being clicked again really quickly and posting twice
           postPin({
             mapId: mapId,
             lat: marker.getPosition().toJSON().lat,
@@ -57,7 +59,6 @@ function editMap() {
           })
             .then(() => {
               stateController = 0;
-              console.log('did it')
               $(`#map-${mapId}`).html("");
               googleMap = createMap(map);
               $('#lat').val("");
