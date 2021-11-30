@@ -49,6 +49,7 @@ module.exports = () => {
     console.log(user);
     console.log(req.body);
     values = [req.body.mapId,req.session.userID,req.body.lat,req.body.long,req.body.icon,req.body.description];
+    console.log(values);
     const query = `INSERT INTO pins(map_id,user_id,lat,long,icon,description)
     VALUES ($1,$2,$3,$4,$5,$6)`;
     db.query(query,values)

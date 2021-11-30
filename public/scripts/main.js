@@ -34,11 +34,17 @@ function editMap() {
               title: $('#title').val(),
               description: $('#description').val(),
               imageUrl:'', //$('#image-url').val(),
-              icon: 'duck' //$('input:checked'),
+              icon: $('input:checked').val(),
             })
               .then(() => {
                 $(`#map-${mapId}`).html("");
                 googleMaps = createMap(map);
+                $('#lat').val("");
+                $('#long').val("");
+                $('#title').val("");
+                $('#description').val("");
+                $('#image-url').val("");
+                $('input:checked').val("");
                 edit(googleMaps);
               });
             // wait for form submission
