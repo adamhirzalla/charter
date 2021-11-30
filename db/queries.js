@@ -30,6 +30,20 @@ const getAllUserMaps = (userId, options, limit = 5) => {
     .catch(err => console.log(err.message));
 };
 
+const getMap = (userId, mapId, options) => {
+  const query = `
+    SELECT maps.* FROM maps
+    JOIN users ON users.id = user_id
+    WHERE user_id = $1 AND maps.id = $2
+    ;`;
+  const values = [userId, mapId];
+  return db
+    .query(query, values)
+    .then(result => result.rows[0])
+    .catch(err => console.log(err.message));
+};
+
+
 const getAllMapPins = (mapId, options) => {
   const query = `
     SELECT pins.* FROM pins
@@ -48,5 +62,6 @@ module.exports = {
   getAllMaps,
   getAllUserMaps,
   getAllMapPins,
+  getMap,
 
 };

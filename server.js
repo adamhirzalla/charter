@@ -10,6 +10,7 @@ const morgan = require("morgan");
 const db = require("./db/queries");
 const app = express();
 
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -66,6 +67,20 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/edit/:mapId", (req, res) => {
+  const userId = req.session.userID;
+  const mapId = req.params.mapId;
+
+  db.getMap(userId, mapId)
+    .then(map => {
+      const templateVars = {
+        userId,
+        apiKey: process.env.API_KEY,
+        map
+      };
+      res.render("map", templateVars);
+    });
+});
 
 app.get("/profile", (req, res) => {
   const userId = req.session.userID;
@@ -77,6 +92,19 @@ app.get("/profile", (req, res) => {
         maps
       };
       res.render("profile", templateVars);
+    });
+});
+
+app.get("/playground", (req, res) => {
+  const userId = req.session.userID;
+  db.getAllUserMaps(userId)
+    .then(maps => {
+      const templateVars = {
+        userId,
+        apiKey: process.env.API_KEY,
+        maps
+      };
+      res.render("index", templateVars);
     });
 });
 
