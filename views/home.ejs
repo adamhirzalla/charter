@@ -11,12 +11,11 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
   <!-- Internal Scripts -->
-  <script type="text/javascript" src="/scripts/network.js"></script>
-  <script type="text/javascript" src="/scripts/drawPins.js"></script>
-  <script type="text/javascript" src="/scripts/mapListener.js"></script>
-  <script type="text/javascript" src="/scripts/createMap.js"></script>
-  <script type="text/javascript" src="/scripts/drawMaps.js"></script>
   <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/scripts/network.js"></script>
+  <script type="text/javascript" src="/scripts/createMap.js"></script>
+  <script type="text/javascript" src="/scripts/mapListener.js"></script>
+  <script type="text/javascript" src="/scripts/drawPins.js"></script>
   <script type="text/javascript" src="/scripts/components/search-maps.js"></script>
 
   <!-- External Scripts -->
@@ -77,10 +76,12 @@
         <div id="map-<%=map.id%>" class="map-container">
 
         </div>
+        <a style="text-decoration: none;" href="/maps/<%=map.id%>">
         <div class="card-body text-dark">
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
         </div>
+        </a>
       </div>
       <% } %>
     <% } %>
