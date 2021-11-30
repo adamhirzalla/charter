@@ -6,50 +6,42 @@
  */
 
 const express = require('express');
-const db = require('../lib/psql');
+const db = require('../db/queries');
 const router  = express.Router();
 
 module.exports = () => {
   router.get("/", (req, res) => {
-    const query = `SELECT * FROM maps`;
-    db.query(query)
-      .then(data => {
-        const maps = data.rows;
-        res.send(maps);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+    const userId = req.session.userID;
+    db.getAllMaps()
+      .then(maps => {
+        const templateVars = {
+          apiKey: process.env.API_KEY,
+          userId,
+          maps
+        };
+        res.render("home", templateVars);
       });
   });
 
   router.get("/:map", (req, res) => {
+    const userId = req.session.userID;
     const mapId = req.params.map;
-    const query = `SELECT * FROM maps WHERE id = $1`;
-    const values = [mapId];
-    db.query(query, values)
-      .then(data => {
-        const map = data.rows[0];
-        res.send(map);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+
+    db.getMap(mapId)
+      .then(map => {
+        const templateVars = {
+          apiKey: process.env.API_KEY,
+          userId,
+          map
+        };
+        res.render("map", templateVars);
       });
   });
 
   router.get("/:map/pins", (req, res) => {
     const mapId = req.params.map;
-    const query = `
-    SELECT pins.* FROM pins
-    JOIN maps ON maps.id = map_id
-    WHERE map_id = $1`;
-    const values = [mapId];
-    db.query(query, values)
-      .then(data => {
-        const pins = data.rows;
+    db.getAllMapPins(mapId)
+      .then(pins => {
         res.send(pins);
       })
       .catch(err => {
