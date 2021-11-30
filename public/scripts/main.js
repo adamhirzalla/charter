@@ -34,12 +34,12 @@ function editMap() {
   const mapId = $('.map-container')[0].id.split('-')[1];
   getMap(mapId)
     .then(map => {
-      createMap(map);
+      const googleMap = createMap(map);
+      googleMap.mapId = mapId;
+      mark(googleMap);
     })
     .catch(e => console.log(e));
 }
-
-
 
 
 
