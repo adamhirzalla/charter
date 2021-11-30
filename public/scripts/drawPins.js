@@ -7,7 +7,6 @@ const drawPins = (pins, map) => {
       position: { lat: pin.lat, lng: pin.long },
       map,
       title: `Pin ${pin.id}!`,
-      draggable: true,
       animation: google.maps.Animation.DROP,
       icon: {
         url: pin.icon,
@@ -26,7 +25,6 @@ const drawPins = (pins, map) => {
       });
     });
   }
-
 
 };
 

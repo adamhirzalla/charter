@@ -85,3 +85,18 @@
 // // }
 // // 45.421616134256915, -75.69411783861774
 // // 45.419146108291635, -75.6858780922698
+
+/* eslint-disable no-undef */
+/**Takes in a options object and a mapID. Generates google map at
+ * the html element specified by options.htmlElement query. Map_id
+ * is attached to the map object as map.dbMapId
+ */
+
+// const drawMaps = function(maps, options) {
+//   for (const map of maps) {
+//     const googleMap = createMap(map, options);
+//   }
+// };
+
+/* const googleMaps = [];
+googleMaps.push(googleMap); */

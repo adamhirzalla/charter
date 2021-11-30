@@ -53,11 +53,23 @@ const getAllMapPins = (mapId, options) => {
     .catch(err => console.log(err.message));
 };
 
+const addPin = (userId, mapId, data) => {
+  const { lat, long, icon, description } = data;
+  const values = [mapId, userId, lat, long, icon, description];
+  const query = `
+    INSERT INTO pins (map_id, user_id, lat, long, icon, description)
+    VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+  return db
+    .query(query, values)
+    .then(data => data.rows[0])
+    .catch(err => console.log(err.message));
+};
 
 module.exports = {
   getAllMaps,
   getAllUserMaps,
   getAllMapPins,
   getMap,
+  addPin,
 
 };

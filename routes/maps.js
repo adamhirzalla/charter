@@ -38,6 +38,21 @@ module.exports = () => {
       });
   });
 
+  router.get("/:map/edit", (req, res) => {
+    const userId = req.session.userID;
+    const mapId = req.params.map;
+
+    db.getMap(mapId)
+      .then(map => {
+        const templateVars = {
+          apiKey: process.env.API_KEY,
+          userId,
+          map
+        };
+        res.render("edit-map", templateVars);
+      });
+  });
+
   router.get("/:map/pins", (req, res) => {
     const mapId = req.params.map;
     db.getAllMapPins(mapId)
@@ -49,6 +64,13 @@ module.exports = () => {
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  router.post("/:map/pins", (req, res)=>{
+    const userId = req.session.userID;
+    const mapId = req.params.map;
+    db.addPin(userId, mapId, req.body);
+    res.redirect(`/maps/${mapId}`);
   });
 
   return router;

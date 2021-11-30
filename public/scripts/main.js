@@ -2,19 +2,40 @@
 /* eslint-disable no-undef */
 // $(function() {
 
+
 // Attach your callback function to the `window` object
+
+function allMaps() {
+  getAllMaps()
+    .then(maps => {
+      maps.forEach(map => createMap(map));
+    })
+    .catch(e => console.log(e));
+}
+
 function userMaps() {
   getUserMaps()
     .then(maps => {
-      drawMaps(maps);
+      maps.forEach(map => createMap(map));
+    })
+    .catch(e => console.log(e));
+}
+
+function map() {
+  const mapId = $('.map-container')[0].id.split('-')[1];
+  //  window.location.href.split('/').slice(-1);
+  getMap(mapId)
+    .then(map => {
+      createMap(map);
     })
     .catch(e => console.log(e));
 }
 
 function editMap() {
-  const url = window.location.href;
-  const split = url.split('/');
-  const mapId = split[split.length - 1];
+  // const url = window.location.href;
+  // const split = url.split('/');
+  // const mapId = split[split.length - 1];
+  const mapId = $('.map-container')[0].id.split('-')[1];
   getMap(mapId)
     .then(map => {
       let googleMaps = createMap(map);
@@ -27,8 +48,8 @@ function editMap() {
             google.maps.event.removeListener(markerListener); //remove listner on map so we can't edit after confirming
             $(`#pinSubmission`).off('click'); //remove click
             marker.setDraggable(false);
-            postPin({
-              mapId: mapId,
+            addPin(mapId, {
+              mapId,
               lat: marker.getPosition().toJSON().lat,
               long: marker.getPosition().toJSON().lng,
               title: $('#title').val(),
@@ -59,10 +80,3 @@ function editMap() {
 }
 
 
-function allMaps() {
-  getAllMaps()
-    .then(maps => {
-      drawMaps(maps);
-    })
-    .catch(e => console.log(e));
-}

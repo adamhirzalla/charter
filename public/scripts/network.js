@@ -1,6 +1,6 @@
 /* eslint-disable func-style */
 
-function getUserMaps(data) {
+function getUserMaps() {
   return $.ajax({
     method: 'get',
     url: `/api/allUserMaps`,
@@ -28,14 +28,14 @@ function getAllMapPins(mapId) {
 function getMap(mapId) {
   return $.ajax({
     method: 'get',
-    url: `/api/userMap/${mapId}`
+    url: `/api/getMap/${mapId}`
   });
 }
 
-function postPin(pin) {
+function addPin(mapId, data) {
   return $.ajax({
     method: 'post',
-    url: `/pins/`,
-    data: pin
+    url: `pins`,
+    data
   });
 }

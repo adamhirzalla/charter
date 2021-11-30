@@ -9,11 +9,10 @@ const mapListener = {
       marker.setMap(map);
       marker.setDraggable(true);
       marker.setAnimation(google.maps.Animation.DROP);
-      $('#lat').val(event.latLng.toJSON().lat)
-      $('#long').val(event.latLng.toJSON().lng)
+      $('#lat').val(event.latLng.toJSON().lat);
+      $('#long').val(event.latLng.toJSON().lng);
     });
     return {markerListener,marker};
   },
-
 
 };
