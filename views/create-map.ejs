@@ -53,8 +53,13 @@
 <main class='grid'>
 <!-- Edit Pin Form -->
   <div class="sticky">
-    <form class="row g-3 m-5" action="/pins/" method="POST">
-      <h1>Edit Pin</h1>
+    <% if (!userId) { %>
+      <p> Please register/login first</p>
+    <%} else { %>
+
+
+    <form class="row g-3 m-5" action="/pins" method="POST">
+      <h1>Create map</h1>
       <div class="col-md-6">
         <label for="lat" class="form-label">Latitude</label>
         <input class="form-control" name="lat" id="lat" type="text">
@@ -102,26 +107,13 @@
         <button id="pinSubmission" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
-
+    <% } %>
   </div>
 
   <!-- List of small map cards -->
   <section id="maps" class="maps">
     <!-- Maps should be rendered inside this section -->
-    <% if (!map) { %>
-      <p> Map doesnt belong to you</p>
-    <%} else { %>
-      <div class="card map-card" >
-        <div id="map-<%=map.id%>" class="map-container">
-        </div>
-        <div class="card-body text-dark">
-          <h5 class="card-title"><%=map.title%></h5>
-          <p class="card-text"><%=map.description%></p>
-        </div>
-        <button id="edit-<%=map.id%>" type="submit">Edit</button>
-        <button id="confirm-<%=map.id%>" type="submit">Confirm</button>
-      </div>
-    <% } %>
+
 
 
   </section>

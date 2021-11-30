@@ -12,11 +12,13 @@
 
   <!-- Internal Scripts -->
   <script type="text/javascript" src="/scripts/main.js"></script>
+  <script type="text/javascript" src="/scripts/mark.js"></script>
   <script type="text/javascript" src="/scripts/network.js"></script>
   <script type="text/javascript" src="/scripts/createMap.js"></script>
   <script type="text/javascript" src="/scripts/mapListener.js"></script>
   <script type="text/javascript" src="/scripts/drawPins.js"></script>
   <script type="text/javascript" src="/scripts/components/search-maps.js"></script>
+  <script type="text/javascript" src="/scripts/components/edit-map.js"></script>
 
   <!-- External Scripts -->
   <script src="https://maps.googleapis.com/maps/api/js?key=<%- apiKey %>&callback=editMap" async></script>
@@ -55,7 +57,7 @@
 <!-- Edit Pin Form -->
 <div class="sticky">
 
-  <form class="row g-3 m-5">
+  <form id="edit-map" method="post" action="/maps/<%=map.id%>/pins" class="row g-3 m-5">
     <h1>--------------------------Edit Pin--------------------------</h1>
     <div class="col-md-6">
       <label for="lat" class="form-label">Latitude</label>
@@ -104,10 +106,10 @@
 
     </fieldset>
 
+    <div class="col-12">
+      <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
+    </div>
   </form>
-  <div class="col-12">
-    <button type="submit" id="pinSubmission" class="btn btn-primary">Submit</button>
-  </div>
 </div>
 
   <!-- List of small map cards -->
@@ -123,7 +125,6 @@
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
         </div>
-        <button id="edit-<%=map.id%>">Edit</button>
       </div>
     <% } %>
 
