@@ -23,6 +23,15 @@ module.exports = () => {
       });
   });
 
+  router.get("/create", (req, res) => {
+    const userId = req.session.userID;
+    const templateVars = {
+      apiKey: process.env.API_KEY,
+      userId
+    };
+    res.render("create-map", templateVars);
+  });
+
   router.get("/:map", (req, res) => {
     const userId = req.session.userID;
     const mapId = req.params.map;
@@ -37,6 +46,8 @@ module.exports = () => {
         res.render("map", templateVars);
       });
   });
+
+
 
   router.get("/:map/edit", (req, res) => {
     const userId = req.session.userID;
@@ -70,7 +81,7 @@ module.exports = () => {
     const userId = req.session.userID;
     const mapId = req.params.map;
     db.addPin(userId, mapId, req.body);
-    res.redirect(`/maps/${mapId}`);
+    res.redirect(`/maps/${mapId}/edit`);
   });
 
   return router;
