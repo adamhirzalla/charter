@@ -65,11 +65,20 @@ const addPin = (userId, mapId, data) => {
     .catch(err => console.log(err.message));
 };
 
+const removePin = (pinId) => {
+  const query = `DELETE FROM pins WHERE id = $1`;
+  const values = [pinId];
+  return db
+    .query(query, values)
+    .catch(err => console.log(err.message));
+};
+
 module.exports = {
   getAllMaps,
   getAllUserMaps,
   getAllMapPins,
   getMap,
   addPin,
+  removePin,
 
 };

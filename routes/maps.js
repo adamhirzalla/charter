@@ -47,8 +47,6 @@ module.exports = () => {
       });
   });
 
-
-
   router.get("/:map/edit", (req, res) => {
     const userId = req.session.userID;
     const mapId = req.params.map;
