@@ -10,6 +10,7 @@ const createMap = function(map) {
   });
   getAllMapPins(map.id)
     .then(pins => {
+      console.log(pins)
       drawPins(pins, googleMap);
     });
   return googleMap;

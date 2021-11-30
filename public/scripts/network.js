@@ -35,7 +35,7 @@ function getMap(mapId) {
 function addPin(mapId, data) {
   return $.ajax({
     method: 'post',
-    url: `pins`,
+    url: `/maps/${mapId}/pins`,
     data
   });
 }
