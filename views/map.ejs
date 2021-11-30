@@ -56,7 +56,7 @@
 <!-- Edit Pin Form -->
 <div class="sticky">
 
-  <form class="row g-3 m-5" action="#" method="post">
+  <form class="row g-3 m-5">
     <h1>Edit Pin</h1>
     <div class="col-md-6">
       <label for="lat" class="form-label">Latitude</label>
@@ -81,7 +81,7 @@
 
     <fieldset class="col-md-12">
       <legend class="col-form-label pt-0">Pin Icon:</legend>
-    
+
       <div class="form-check col-md-2">
         <input class="form-check-input" type="radio" name="icon" id="default" value="default" checked>
         <label class="form-check-label" for="default">
@@ -105,11 +105,10 @@
 
     </fieldset>
 
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
   </form>
-  
+  <div class="col-12">
+    <button type="submit" id="pinSubmission" class="btn btn-primary">Submit</button>
+  </div>
 </div>
 
   <!-- List of small map cards -->
@@ -125,8 +124,8 @@
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
         </div>
-        <button id="edit-<%=map.id%>" type="submit">Edit</button>
-        <button id="confirm-<%=map.id%>" type="submit">Confirm</button>
+        <button id="edit-<%=map.id%>">Edit</button>
+        <button id="confirm-<%=map.id%>">Confirm</button>
       </div>
     <% } %>
 

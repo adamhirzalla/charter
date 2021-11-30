@@ -45,7 +45,14 @@ module.exports = () => {
   });
 
   router.post("/",(req,res)=>{
+    const user = req.session.userID;
+    console.log(user);
     console.log(req.body);
+    values = [req.body.mapId,req.session.userID,req.body.lat,req.body.long,req.body.icon,req.body.description];
+    const query = `INSERT INTO pins(map_id,user_id,lat,long,icon,description)
+    VALUES ($1,$2,$3,$4,$5,$6)`;
+    db.query(query,values)
+    res.redirect(`//localhost:8080/edit/${req.body.mapId}`)
   })
 
   return router;

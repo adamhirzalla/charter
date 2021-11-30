@@ -17,21 +17,33 @@ function editMap() {
   const mapId = split[split.length - 1];
   getMap(mapId)
     .then(map => {
-      const googleMaps = createMap(map);
+      let googleMaps = createMap(map);
       const edit = (googleMaps) => {
-        $(`#edit-${mapId}`).on('click', () => { // attach listner to map when edit is clicked
+        $(`#edit-${mapId}`).on('click', (event) => { // attach listner to map when edit is clicked
           $(`#edit-${mapId}`).off('click'); // remove edit listner so can't be repeated
           const { marker, markerListener } = mapListener.attachMarker(googleMaps);
-          $(`#confirm-${mapId}`).on('click', () => { //attach listner to confirm
+          $(`#pinSubmission`).on('click', (event) => { //attach listner to confirm
+            event.preventDefault();
             google.maps.event.removeListener(markerListener); //remove listner on map so we can't edit after confirming
-            $(`#confirm-${mapId}`).off('click'); //remove click
+            $(`#pinSubmission`).off('click'); //remove click
             marker.setDraggable(false);
-            console.log(marker.getPosition().toJSON());
-            postPin({bob:'asdf'});
+            postPin({
+              mapId: mapId,
+              lat: marker.getPosition().toJSON().lat,
+              long: marker.getPosition().toJSON().lng,
+              title: $('#title').val(),
+              description: $('#description').val(),
+              imageUrl:'', //$('#image-url').val(),
+              icon: 'duck' //$('input:checked'),
+            })
+              .then(() => {
+                $(`#map-${mapId}`).html("");
+                googleMaps = createMap(map);
+                edit(googleMaps);
+              });
             // wait for form submission
             // make ajax post to /users/:user/maps/:map/pins
             // that will take care of sql connectio
-            edit(googleMaps);
           });
         });
       };

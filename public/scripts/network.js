@@ -4,7 +4,6 @@ function getUserMaps(data) {
   return $.ajax({
     method: 'get',
     url: `/api/allUserMaps`,
-    data
   });
 }
 
