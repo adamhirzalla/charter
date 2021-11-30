@@ -4,7 +4,6 @@ function getUserMaps(data) {
   return $.ajax({
     method: 'get',
     url: `/api/allUserMaps`,
-    data
   });
 }
 
@@ -30,5 +29,13 @@ function getMap(mapId) {
   return $.ajax({
     method: 'get',
     url: `/api/userMap/${mapId}`
+  });
+}
+
+function postPin(pin) {
+  return $.ajax({
+    method: 'post',
+    url: `/pins/`,
+    data: pin
   });
 }

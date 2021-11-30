@@ -8,6 +8,10 @@
 const express = require('express');
 const db = require('../lib/psql');
 const router  = express.Router();
+const bodyParser    = require("body-parser");
+
+const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 module.exports = () => {
   router.get("/", (req, res) => {
@@ -39,6 +43,18 @@ module.exports = () => {
           .json({ error: err.message });
       });
   });
+
+  router.post("/",(req,res)=>{
+    const user = req.session.userID;
+    console.log(user);
+    console.log(req.body);
+    values = [req.body.mapId,req.session.userID,req.body.lat,req.body.long,req.body.icon,req.body.description];
+    console.log(values);
+    const query = `INSERT INTO pins(map_id,user_id,lat,long,icon,description)
+    VALUES ($1,$2,$3,$4,$5,$6)`;
+    db.query(query,values)
+    res.redirect(`//localhost:8080/edit/${req.body.mapId}`)
+  })
 
   return router;
 };
