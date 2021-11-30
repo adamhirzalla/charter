@@ -71,20 +71,6 @@ app.get("/profile", (req, res) => {
     });
 });
 
-app.get("/playground/:map", (req, res) => {
-  const userId = req.session.userID;
-  const mapId = req.params.map;
-  db.getMap(mapId)
-    .then(map => {
-      const templateVars = {
-        apiKey: process.env.API_KEY,
-        userId,
-        map
-      };
-      res.render("create-map", templateVars);
-    });
-});
-
 
 app.get('/login/:id', (req, res) => {
   const user = req.params.id;
