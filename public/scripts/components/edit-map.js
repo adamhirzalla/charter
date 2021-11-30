@@ -5,8 +5,16 @@ $(() => {
     event.preventDefault();
     const data = $(this).serialize();
     const mapId = window.googleMarker.map.mapId;
-    console.log(data);
-    addPin(mapId, data)
-      .then($('#edit-map').trigger('reset'));
+    addPin(mapId, data);
+  });
+
+  $('#delete').on('click', (event) => {
+    event.preventDefault();
+    const marker = window.selectedMarker;
+    const pinId = marker.pinId;
+    if (pinId) {
+      marker.setMap(null);
+      removePin(pinId);
+    }
   });
 });

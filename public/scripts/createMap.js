@@ -7,7 +7,8 @@ const createMap = function(map) {
     mapId: '93b06d228f001f87',
     mapTypeControl: false,
     fullscreenControl: false,
-    streetViewControl: false
+    streetViewControl: false,
+    mapID: map.id
   });
   getAllMapPins(map.id)
     .then(pins => {

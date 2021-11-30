@@ -11,7 +11,8 @@ const drawPins = (pins, map) => {
       icon: {
         url: pin.icon,
         scaledSize: new google.maps.Size(38, 31)
-      }
+      },
+      pinId: pin.id
     });
     addInfoWindow(map, pin.description, marker);
   }
@@ -20,6 +21,7 @@ const drawPins = (pins, map) => {
 const addInfoWindow = (map, content, marker) => {
   const infoWindow = new google.maps.InfoWindow({content});
   marker.addListener("click", () => {
+    window.selectedMarker = marker;
     infoWindow.open({
       map,
       anchor: marker,

@@ -10,8 +10,16 @@ const addMarker = (position, map) => {
       map,
       draggable: true,
       animation: google.maps.Animation.BOUNCE,
+      icon: {
+        url: $('input:checked').val(),
+        scaledSize: new google.maps.Size(38, 31)
+      }
     });
   }
+  window.googleMarker.setIcon({
+    url: $('input:checked').val(),
+    scaledSize: new google.maps.Size(38, 31)
+  });
   window.googleMarker.setPosition(position);
   $('#lat').val(position.toJSON().lat);
   $('#long').val(position.toJSON().lng);

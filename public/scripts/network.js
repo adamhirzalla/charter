@@ -39,3 +39,11 @@ function addPin(mapId, data) {
     data
   });
 }
+
+function removePin(pinId) {
+  return $.ajax({
+    method: 'post',
+    url: `/pins`,
+    data: {pinId}
+  });
+}

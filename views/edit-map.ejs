@@ -57,7 +57,7 @@
 <!-- Edit Pin Form -->
 <div class="sticky">
 
-  <form id="edit-map" method="post" action="/maps/<%=map.id%>/pins" class="row g-3 m-5">
+  <form id="edit-map" action="/maps/<%=map.id%>/pins" method="post"  class="row g-3 m-5">
     <h1>--------------------------Edit Pin--------------------------</h1>
     <div class="col-md-6">
       <label for="lat" class="form-label">Latitude</label>
@@ -124,6 +124,9 @@
         <div class="card-body text-dark">
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
+          <form action="/pins" method="post">
+            <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
+          </form>
         </div>
       </div>
     <% } %>
