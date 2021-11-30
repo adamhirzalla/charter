@@ -32,3 +32,11 @@ function getMap(mapId) {
     url: `/api/userMap/${mapId}`
   });
 }
+
+function postPin(pin) {
+  return $.ajax({
+    method: 'post',
+    url: `/pins/`,
+    data: pin
+  });
+}

@@ -27,6 +27,7 @@ function editMap() {
             $(`#confirm-${mapId}`).off('click'); //remove click
             marker.setDraggable(false);
             console.log(marker.getPosition().toJSON());
+            postPin({bob:'asdf'});
             // wait for form submission
             // make ajax post to /users/:user/maps/:map/pins
             // that will take care of sql connectio

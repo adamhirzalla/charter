@@ -8,6 +8,10 @@
 const express = require('express');
 const db = require('../lib/psql');
 const router  = express.Router();
+const bodyParser    = require("body-parser");
+
+const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 module.exports = () => {
   router.get("/", (req, res) => {
@@ -39,6 +43,10 @@ module.exports = () => {
           .json({ error: err.message });
       });
   });
+
+  router.post("/",(req,res)=>{
+    console.log(req.body);
+  })
 
   return router;
 };
