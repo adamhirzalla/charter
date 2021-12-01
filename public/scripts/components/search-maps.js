@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-
+// will rename to ready.js
 $(() => {
-  $('#search-maps').on('submit', function(event) {
+  $('#search-maps').on('submit', function (event) {
     event.preventDefault();
     const data = $(this).serialize();
     getAllMaps(data)
@@ -34,5 +34,28 @@ $(() => {
   getUser()
     .then((user) => {
       $('#dropdownMenuLink').html(user.name);
-    });
+      // $('.fav').addClass('text-dark bg-danger')
+      getFavMaps(user.id)
+        .then(favMaps => {
+          for (const favMap of favMaps) {
+            $(`#fav-${favMap.map_id}`).addClass('bg-danger');
+          }
+        })
+    })
+    .catch(e => console.log(e));
+
+  $('.fav').on('click', (event) => {
+    const elementId = event.currentTarget.id;
+    const $fav = $(`#${elementId}`);
+    if ($fav.hasClass('bg-danger')) {
+      //delete
+      $fav.addClass('bg-white');
+      $fav.removeClass('bg-danger');
+    }
+    else {
+      //insert
+      $fav.removeClass('bg-white');
+      $fav.addClass('bg-danger');
+    }
+  })
 });

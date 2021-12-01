@@ -43,7 +43,6 @@ function editMap() {
 
 
 
-
 /* function editMap() {
   // const url = window.location.href;
   // const split = url.split('/');

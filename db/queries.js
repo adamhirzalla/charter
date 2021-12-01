@@ -99,6 +99,16 @@ const addMap = (data) => {
     .catch(err => console.log(err.message));
 };
 
+const getFavMaps = (userId) => {
+  const query = `
+  SELECT * FROM favorites
+  WHERE user_id = $1`;
+  const values = [userId]
+  return db
+    .query(query, values)
+    .then(data => data.rows)
+}
+
 module.exports = {
   getAllMaps,
   getAllUserMaps,
@@ -108,5 +118,5 @@ module.exports = {
   removePin,
   addMap,
   getUser,
-
+  getFavMaps,
 };

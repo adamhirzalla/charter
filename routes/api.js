@@ -39,5 +39,11 @@ module.exports = () => {
       .then(map => res.send(map));
   });
 
+  router.get("/favMaps/:userId", (req, res) => {
+    const userId = req.params.userId;
+    db.getFavMaps(userId)
+      .then(maps => res.send(maps));
+  });
+
   return router;
 };

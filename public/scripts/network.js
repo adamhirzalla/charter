@@ -61,3 +61,10 @@ function removePin(pinId) {
     data: {pinId}
   });
 }
+
+function getFavMaps(userId) {
+  return $.ajax({
+    method: 'get',
+    url: `/api/favMaps/${userId}`
+  });
+}
