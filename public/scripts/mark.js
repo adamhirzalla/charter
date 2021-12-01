@@ -12,13 +12,13 @@ const addMarker = (position, map) => {
       animation: google.maps.Animation.BOUNCE,
       icon: {
         url: $('input:checked').val(),
-        scaledSize: new google.maps.Size(38, 31)
+        scaledSize: new google.maps.Size(40, 55)
       }
     });
   }
   window.googleMarker.setIcon({
     url: $('input:checked').val(),
-    scaledSize: new google.maps.Size(38, 31)
+    scaledSize: new google.maps.Size(40, 55)
   });
   window.googleMarker.setPosition(position);
   $('#lat').val(position.toJSON().lat);

@@ -10,7 +10,7 @@ const drawPins = (pins, map) => {
       animation: google.maps.Animation.DROP,
       icon: {
         url: pin.icon,
-        scaledSize: new google.maps.Size(38, 31)
+        scaledSize: new google.maps.Size(40, 55)
       },
       pinId: pin.id
     });

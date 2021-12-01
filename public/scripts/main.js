@@ -43,8 +43,8 @@ function editMap() {
 
 
 
-/*
-function editMap() {
+
+/* function editMap() {
   // const url = window.location.href;
   // const split = url.split('/');
   // const mapId = split[split.length - 1];
@@ -78,8 +78,9 @@ function editMap() {
           });
         }
       });
-
+        // 0 base -> 1 -> adds listener on map -> 2 do stuff submission -> 0
       $(`#pinSubmission`).on(`click`, (event) => {
+        if (!$('#lat').val("")) return
         if (stateController === 2) {
           stateController = 3; //update to 3 so we prevent submit from being clicked again really quickly and posting twice
           addPin({
@@ -108,4 +109,5 @@ function editMap() {
 
     })
     .catch(e => console.log(e));
-} */
+}
+ */
