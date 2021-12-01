@@ -7,11 +7,9 @@
   width: 380px;
   border: none;
   border-radius: 15px;
-  padding: 8px;
   background-color: #fff;
   position: relative;
-  height: 370px;
-  box-shadow: 1px;
+  height: 50vh;
 }
 
 .upper {
@@ -29,17 +27,17 @@
 .profile {
 
   img {
-    height: 80px;
-    width: 80px;
+    height: 120px;
+    width: 120px;
     margin-top: 2px;
     background-color: #fff;
   }
 
-  position: absolute;
+  position: relative;
   top: -50px;
-  left: 38%;
-  height: 90px;
-  width: 90px;
+  margin: 0 auto;
+  height: 130px;
+  width: 130px;
   border: 3px solid #fff;
   border-radius: 50%
 }
