@@ -6,6 +6,7 @@ VALUES
 (4, 2, 'Fav list4'),
 (3, 2, 'Fav list5'),
 (5, 1, 'Fav list6'),
-(5, 1, 'Fav list7'),
+(3, 1, 'Fav list7'),
+(3, 1, 'Fav list7'),
 (6, 3, 'Fav list8'),
 (9, 1, 'Fav list9');
