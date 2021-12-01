@@ -103,11 +103,26 @@ const getFavMaps = (userId) => {
   const query = `
   SELECT * FROM favorites
   WHERE user_id = $1`;
-  const values = [userId]
+  const values = [userId];
   return db
     .query(query, values)
     .then(data => data.rows)
-}
+    .catch(err => console.log(err.message));
+};
+
+const removeFav = (userId, mapId) => {
+  const query = `
+  DELETE FROM favorites
+  WHERE user_id = $1 AND map_id = $2`;
+  const values = [userId, mapId];
+  return db
+    .query(query, values)
+    .catch(err => console.log(err.message));
+};
+
+const addFav = () => {
+
+};
 
 module.exports = {
   getAllMaps,
@@ -119,4 +134,7 @@ module.exports = {
   addMap,
   getUser,
   getFavMaps,
+  removeFav,
+  addFav,
+
 };

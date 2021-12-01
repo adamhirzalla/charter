@@ -45,5 +45,12 @@ module.exports = () => {
       .then(maps => res.send(maps));
   });
 
+  router.post("/favs/delete", (req, res) => {
+    const userId = req.session.userID;
+    const mapId = req.body.mapId;
+    db.removeFav(userId, mapId);
+    res.status(200);
+  });
+
   return router;
 };
