@@ -68,3 +68,11 @@ function getFavMaps(userId) {
     url: `/api/favMaps/${userId}`
   });
 }
+
+function removeFav(mapId) {
+  return $.ajax({
+    method: 'post',
+    url: `/api/favs/delete`,
+    data: {mapId}
+  });
+}
