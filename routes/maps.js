@@ -82,5 +82,19 @@ module.exports = () => {
     res.redirect(`/maps/${mapId}/edit`);
   });
 
+  router.post("/", (req, res) => {
+    const userId = req.session.userID;
+    const data = { ...req.body, userId };
+    db.addMap(data)
+      .then(mapId => {
+        res.redirect(`/maps/${mapId}`);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };

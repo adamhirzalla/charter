@@ -73,6 +73,21 @@ const removePin = (pinId) => {
     .catch(err => console.log(err.message));
 };
 
+const addMap = (data) => {
+  const { userId, title, description, visibility, theme } = data;
+  const query = `
+  INSERT INTO maps (user_id, title, description, is_public, theme)
+  VALUES
+  ($1, $2, $3, $4, $5)
+  RETURNING id;
+  `;
+  const values = [userId, title, description, visibility, theme];
+  return db
+    .query(query, values)
+    .then(data => data.rows[0].id)
+    .catch(err => console.log(err.message));
+};
+
 module.exports = {
   getAllMaps,
   getAllUserMaps,
@@ -80,5 +95,5 @@ module.exports = {
   getMap,
   addPin,
   removePin,
-
+  addMap,
 };
