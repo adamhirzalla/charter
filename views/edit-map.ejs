@@ -56,7 +56,9 @@
 
 <!-- Edit Pin Form -->
 <div class="sticky">
-
+  <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
+    <p> Map doesnt belong to you</p>
+  <%} else { %>
   <form id="edit-map" action="/maps/<%=map.id%>/pins" method="post"  class="row g-3 m-5">
     <h1>--------------------------Edit Pin--------------------------</h1>
     <div class="col-md-6">
@@ -115,9 +117,7 @@
   <!-- List of small map cards -->
   <section id="maps" class="maps">
     <!-- Maps should be rendered inside this section -->
-    <% if (!map) { %>
-      <p> Map doesnt belong to you</p>
-    <%} else { %>
+
       <div class="card map-card" >
         <div id="map-<%=map.id%>" class="map-container">
         </div>
