@@ -79,7 +79,7 @@ app.get('/login/:id', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-  req.session.userID = null;
+  req.session = null;
   res.redirect('/');
 });
 

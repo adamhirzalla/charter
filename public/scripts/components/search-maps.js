@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 
+
 $(() => {
   $('#search-maps').on('submit', function(event) {
     event.preventDefault();
@@ -31,8 +32,5 @@ $(() => {
         }
       });
   });
-  getUser()
-    .then((user) => {
-      $('#dropdownMenuLink').html(user.name);
-    });
+
 });

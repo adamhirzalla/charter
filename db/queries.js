@@ -99,6 +99,38 @@ const addMap = (data) => {
     .catch(err => console.log(err.message));
 };
 
+const getFavMaps = (userId) => {
+  const query = `
+  SELECT * FROM favorites
+  WHERE user_id = $1`;
+  const values = [userId];
+  return db
+    .query(query, values)
+    .then(data => data.rows)
+    .catch(err => console.log(err.message));
+};
+
+const removeFav = (userId, mapId) => {
+  const query = `
+  DELETE FROM favorites
+  WHERE user_id = $1 AND map_id = $2`;
+  const values = [userId, mapId];
+  return db
+    .query(query, values)
+    .catch(err => console.log(err.message));
+};
+
+const addFav = (userId, mapId) => {
+  const query = `
+  INSERT INTO favorites
+  (user_id, map_id, title)
+  VALUES ($1, $2, $3)`;
+  const values = [userId, mapId, 'Sample fav name'];
+  return db
+    .query(query, values)
+    .catch(err => console.log(err.message));
+};
+
 module.exports = {
   getAllMaps,
   getAllUserMaps,
@@ -108,5 +140,8 @@ module.exports = {
   removePin,
   addMap,
   getUser,
+  getFavMaps,
+  removeFav,
+  addFav,
 
 };

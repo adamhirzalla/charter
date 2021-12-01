@@ -16,6 +16,7 @@
   <script type="text/javascript" src="/scripts/createMap.js"></script>
   <script type="text/javascript" src="/scripts/mapListener.js"></script>
   <script type="text/javascript" src="/scripts/drawPins.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/components/search-maps.js"></script>
 
   <!-- External Scripts -->
@@ -83,6 +84,9 @@
             <p class="card-text"><%=map.description%></p>
           </div>
           </a>
+          <% if (userId) { %>
+              <button id="fav-<%=map.id%>" type = "button" class="btn btn-dark fav"> favourite </button>
+          <% } %>
         </div>
         <% } %>
       <% } %>

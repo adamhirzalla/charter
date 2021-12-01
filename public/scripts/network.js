@@ -61,3 +61,26 @@ function removePin(pinId) {
     data: {pinId}
   });
 }
+
+function getFavMaps(userId) {
+  return $.ajax({
+    method: 'get',
+    url: `/api/favMaps/${userId}`
+  });
+}
+
+function removeFav(mapId) {
+  return $.ajax({
+    method: 'post',
+    url: `/api/favs/delete`,
+    data: {mapId}
+  });
+}
+
+function addFav(mapId) {
+  return $.ajax({
+    method: 'post',
+    url: `/api/favs`,
+    data: {mapId}
+  });
+}
