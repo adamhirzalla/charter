@@ -55,31 +55,7 @@ app.use("/api", apiRoutes());
 
 
 app.get("/", (req, res) => {
-  const userId = req.session.userID;
-  db.getAllMaps()
-    .then(maps => {
-      const templateVars = {
-        userId,
-        apiKey: process.env.API_KEY,
-        maps
-      };
-      res.render("home", templateVars);
-    });
-});
-
-app.get("/edit/:mapId", (req, res) => {
-  const userId = req.session.userID;
-  const mapId = req.params.mapId;
-
-  db.getMap(userId, mapId)
-    .then(map => {
-      const templateVars = {
-        userId,
-        apiKey: process.env.API_KEY,
-        map
-      };
-      res.render("map", templateVars);
-    });
+  res.redirect('/maps');
 });
 
 app.get("/profile", (req, res) => {
@@ -87,24 +63,11 @@ app.get("/profile", (req, res) => {
   db.getAllUserMaps(userId)
     .then(maps => {
       const templateVars = {
-        userId,
         apiKey: process.env.API_KEY,
+        userId,
         maps
       };
       res.render("profile", templateVars);
-    });
-});
-
-app.get("/playground", (req, res) => {
-  const userId = req.session.userID;
-  db.getAllUserMaps(userId)
-    .then(maps => {
-      const templateVars = {
-        userId,
-        apiKey: process.env.API_KEY,
-        maps
-      };
-      res.render("index", templateVars);
     });
 });
 

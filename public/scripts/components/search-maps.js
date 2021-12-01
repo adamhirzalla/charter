@@ -20,8 +20,8 @@ $(() => {
           </div>`
           );
           $('#maps').append($mapContainer);
+          createMap(map);
         }
-        drawMaps(maps);
       });
   });
 
