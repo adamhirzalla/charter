@@ -57,56 +57,50 @@
       <p> Please register/login first</p>
     <%} else { %>
 
-
-    <form class="row g-3 m-5" action="/pins" method="POST">
-      <h1>Create map</h1>
-      <div class="col-md-6">
-        <label for="lat" class="form-label">Latitude</label>
-        <input class="form-control" name="lat" id="lat" type="text">
-      </div>
-      <div class="col-md-6">
-        <label for="long" class="form-label">Longitude</label>
-        <input class="form-control" name="long" id="long" type="text">
-      </div>
-      <div class="col-md-12">
-        <label for="title" class="form-label">Title</label>
-        <input class="form-control" name="title" id="title" type="text">
-      </div>
-      <div class="col-md-12">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" name="description" type="text"></textarea>
-      </div>
-      <div class="col-md-12">
-        <label for="image-url" class="form-label">Image URL</label>
-        <input class="form-control" name="image-url" type="text">
-      </div>
-
-      <fieldset class="col-md-12">
-        <legend class="col-form-label pt-0">Pin Icon:</legend>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="default" value="default" checked>
-          <label class="form-check-label" for="default">
-            Default
-          </label>
+      <!-- Create Map Form -->
+      <form class="row g-3 m-5" action="/pins" method="POST">
+        <h1>Create Map</h1>
+        <div class="col-md-12">
+          <label for="title" class="form-label">Title</label>
+          <input class="form-control" name="title" id="title" type="text">
         </div>
-
-    </fieldset>
-
-    <div class="col-md-4">
-      <label for="theme">Theme:</label>
-      <select class="form-select" name="theme" id="theme">
-        <option value="default" selected>Default</option>
-        <option value="pokemon">Pokemon</option>
-      </select>
-    </div>
-
-      </fieldset>
-
-      <div class="col-12">
-        <button id="pinSubmission" type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
+        <div class="col-md-12">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" name="description" type="text" id="description"></textarea>
+        </div>
+    
+    
+        <fieldset class="col-md-12">
+          <legend class="col-form-label pt-0">Visibility:</legend>
+    
+          <div class="form-check col-md-2">
+            <input class="form-check-input" type="radio" name="visibility" id="public" value="public" checked>
+            <label class="form-check-label" for="public">
+              Public
+            </label>
+          </div>
+    
+          <div class="form-check col-md-2">
+            <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
+            <label class="form-check-label" for="private">
+              Private
+            </label>
+          </div>
+    
+        </fieldset>
+    
+        <div class="col-md-4">
+          <label for="theme">Theme:</label>
+          <select class="form-select" name="theme" id="theme">
+            <option value="default" selected>Default</option>
+            <option value="pokemon">Pokemon</option>
+          </select>
+        </div>
+    
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
     <% } %>
   </div>
 
