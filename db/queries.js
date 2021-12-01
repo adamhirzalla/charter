@@ -1,6 +1,17 @@
 /* eslint-disable camelcase */
 const db = require('../lib/psql');
 
+const getUser = (userId) => {
+  const query = `
+  SELECT * FROM users WHERE id = $1;
+  `;
+  const values = [userId];
+  return db
+    .query(query, values)
+    .then(data => data.rows[0])
+    .catch(err => console.log(err.message));
+};
+
 const getAllMaps = (options = {}, limit = 5) => {
   let {id, user_id, title, description, is_public} = options;
   let query = `SELECT * FROM maps `;
@@ -96,4 +107,6 @@ module.exports = {
   addPin,
   removePin,
   addMap,
+  getUser,
+
 };

@@ -59,7 +59,7 @@
   <!-- List of small map cards -->
   <section id="maps" class="maps">
     <!-- Maps should be rendered inside this section -->
-    <% if (!map) { %>
+    <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
       <p> Map doesnt belong to you</p>
     <%} else { %>
       <div class="card map-card" >

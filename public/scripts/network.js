@@ -7,6 +7,20 @@ function getUserMaps() {
   });
 }
 
+function getUser() {
+  return $.ajax({
+    method: 'get',
+    url: `/api/me`
+  });
+}
+
+function getUserId() {
+  return $.ajax({
+    method: 'get',
+    url: '/api/userId'
+  });
+}
+
 function getAllMaps(params) {
   let url = '/api/allMaps';
   if (params) {

@@ -11,6 +11,12 @@ const db = require("../db/queries");
 
 module.exports = () => {
 
+  router.get("/me", (req, res) => {
+    const userId = req.session.userID;
+    db.getUser(userId)
+      .then(user => res.send(user));
+  });
+
   router.get("/userId", (req, res) => {
     const user = req.session.userID;
     res.send(user);
