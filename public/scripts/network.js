@@ -48,9 +48,10 @@ function removePin(pinId) {
   });
 }
 
-function addMap() {
+function addMap(data) {
   return $.ajax({
     method:'post',
     url: '/maps',
+    data,
   });
 }
