@@ -47,3 +47,10 @@ function removePin(pinId) {
     data: {pinId}
   });
 }
+
+function addMap() {
+  return $.ajax({
+    method:'post',
+    url: '/maps',
+  });
+}

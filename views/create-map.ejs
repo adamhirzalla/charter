@@ -17,9 +17,10 @@
   <script type="text/javascript" src="/scripts/mapListener.js"></script>
   <script type="text/javascript" src="/scripts/drawPins.js"></script>
   <script type="text/javascript" src="/scripts/components/search-maps.js"></script>
+  <script type="text/javascript" src="/scripts/components/create-map.js"></script>
 
   <!-- External Scripts -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%- apiKey %>&callback=editMap" async></script>
+
   <!-- These scripts are necessary for bootstrap functionality -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -50,15 +51,13 @@
   <!-- Navbar ENDS -->
 
 
-<main class='grid'>
 <!-- Edit Pin Form -->
-  <div class="sticky">
     <% if (!userId) { %>
       <p> Please register/login first</p>
     <%} else { %>
 
       <!-- Create Map Form -->
-      <form class="row g-3 m-5" action="/pins" method="POST">
+      <form class="row g-3 m-5" id="new-map" action="/maps" method="POST">
         <h1>Create Map</h1>
         <div class="col-md-12">
           <label for="title" class="form-label">Title</label>
@@ -98,19 +97,11 @@
         </div>
     
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button id="submit" type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
     <% } %>
-  </div>
 
-  <!-- List of small map cards -->
-  <section id="maps" class="maps">
-    <!-- Maps should be rendered inside this section -->
-
-
-
-  </section>
 </main>
 
 </body>

@@ -82,5 +82,9 @@ module.exports = () => {
     res.redirect(`/maps/${mapId}/edit`);
   });
 
+  router.post("/", (req, res) => {
+    console.log(req.body);
+  });
+
   return router;
 };
