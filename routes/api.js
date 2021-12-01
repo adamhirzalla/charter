@@ -27,10 +27,9 @@ module.exports = () => {
       .then(maps => res.send(maps));
   });
 
-  router.get("/userMap/:mapId", (req, res) => {
-    const userId = req.session.userID;
+  router.get("/getMap/:mapId", (req, res) => {
     const mapId = req.params.mapId;
-    db.getMap(userId, mapId)
+    db.getMap(mapId)
       .then(map => res.send(map));
   });
 

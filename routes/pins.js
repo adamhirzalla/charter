@@ -6,8 +6,11 @@
  */
 
 const express = require('express');
-const db = require('../lib/psql');
+const db = require('../db/queries');
 const router  = express.Router();
+
+const app = express();
+app.use(express.urlencoded({ extended: true }));
 
 module.exports = () => {
   router.get("/", (req, res) => {
@@ -38,6 +41,12 @@ module.exports = () => {
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  router.post("/", (req, res)=>{
+    const pinId = req.body.pinId;
+    db.removePin(pinId);
+    return;
   });
 
   return router;

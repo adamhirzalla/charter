@@ -13,18 +13,24 @@
       <!-- Profile Button -->
       <div class="dropdown show ml-2">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Profile
+          <% if (userId){%>
+            Menu
+          <% } else { %>
+            Login
+          <% } %>
         </a>
 
         <!-- Dropdown items -->
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-          <a class="dropdown-item" href="/profile">My Profile</a>
-          <a class="dropdown-item" href="#">Friends</a>
           <% if (userId){%>
+            <a class="dropdown-item" href="/maps/create">Create map</a>
+          <a class="dropdown-item" href="/profile">My Profile</a>
           <a class="dropdown-item" href="/logout">Logout</a>
           <% } else { %>
-          <a class="dropdown-item" href="/login/1">Login</a>
+                <a class="dropdown-item" href="/login/1">as Adam</a>
+                <a class="dropdown-item" href="/login/2">as Leon</a>
+                <a class="dropdown-item" href="/login/3">as Joseph</a>
           <% } %>
         </div>
       </div>
