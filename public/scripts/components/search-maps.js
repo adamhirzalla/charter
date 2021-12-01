@@ -13,18 +13,26 @@ $(() => {
             <div id="map-${map.id}" class="map-container">
 
             </div>
+            <a style="text-decoration: none;" href="/maps/${map.id}">
             <div class="card-body text-dark">
               <h5 class="card-title">${map.title}</h5>
               <p class="card-text">${map.description}</p>
             </div>
+            </a>
           </div>`
           );
-          $('#maps').append($mapContainer);
-          createMap(map);
+          getUserId()
+            .then(userId => {
+              if (map.is_public || Number(userId) === map.user_id) {
+                $('#maps').append($mapContainer);
+                createMap(map);
+              }
+            });
         }
       });
   });
-
-
-
+  getUser()
+    .then((user) => {
+      $('#dropdownMenuLink').html(user.name);
+    });
 });
