@@ -33,7 +33,5 @@ module.exports = () => {
       .then(map => res.send(map));
   });
 
-
-
   return router;
 };
