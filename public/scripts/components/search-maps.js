@@ -47,13 +47,14 @@ $(() => {
   $('.fav').on('click', (event) => {
     const elementId = event.currentTarget.id;
     const $fav = $(`#${elementId}`);
+    const mapId =elementId.split('-')[1];
     if ($fav.hasClass('bg-danger')) {
-      //delete
+      //api/favs/delete
       $fav.addClass('bg-white');
       $fav.removeClass('bg-danger');
     }
     else {
-      //insert
+      // insertFavs()
       $fav.removeClass('bg-white');
       $fav.addClass('bg-danger');
     }
