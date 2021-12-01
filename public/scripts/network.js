@@ -76,3 +76,11 @@ function removeFav(mapId) {
     data: {mapId}
   });
 }
+
+function addFav(mapId) {
+  return $.ajax({
+    method: 'post',
+    url: `/api/favs`,
+    data: {mapId}
+  });
+}

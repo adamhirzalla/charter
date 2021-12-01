@@ -24,7 +24,7 @@ $(() => {
       $fav.removeClass('btn-danger');
       $fav.addClass('btn-dark');
     } else {
-      addFav();
+      addFav(mapId);
       $fav.removeClass('btn-dark');
       $fav.addClass('btn-danger');
     }

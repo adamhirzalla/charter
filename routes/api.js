@@ -52,5 +52,12 @@ module.exports = () => {
     res.status(200);
   });
 
+  router.post("/favs", (req, res) => {
+    const userId = req.session.userID;
+    const mapId = req.body.mapId;
+    db.addFav(userId, mapId);
+    res.status(200);
+  });
+
   return router;
 };

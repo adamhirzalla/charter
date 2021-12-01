@@ -120,8 +120,15 @@ const removeFav = (userId, mapId) => {
     .catch(err => console.log(err.message));
 };
 
-const addFav = () => {
-
+const addFav = (userId, mapId) => {
+  const query = `
+  INSERT INTO favorites
+  (user_id, map_id, title)
+  VALUES ($1, $2, $3)`;
+  const values = [userId, mapId, 'Sample fav name'];
+  return db
+    .query(query, values)
+    .catch(err => console.log(err.message));
 };
 
 module.exports = {
