@@ -56,12 +56,12 @@
 <main class='grid'>
 
 <!-- Edit Pin Form -->
-<div class="sticky">
+<div class="left">
   <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
     <p> Map doesnt belong to you</p>
   <%} else { %>
-    <div class="form-container ms-5 shadow-lg border-top-0">
-      <form id="edit-map" class="row g-3 m-5">
+    <div class="form-container ms-5 p-5 shadow-lg border  border-top-0">
+      <form id="edit-map" class="row g-3 px-1 pt-0">
         <h1 class="text-center">Edit Pin</h1>
         <div class="col-md-6">
           <label for="lat" class="form-label">Latitude</label>
@@ -84,35 +84,30 @@
         <input class="form-control" name="image-url" id="image-url" type="text">
       </div>
 
-      <fieldset class="col-md-12">
-        <legend class="col-form-label pt-0">Pin Icon:</legend>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="default" value="/images/icons/poke-marker.svg" checked>
-          <label class="form-check-label" for="default">
+      <!-- List of Pin Icons -->
+      <div class="col-md-6 mb-4">
+        <label for="pin-icon">Pin Icon</label>
+        <select class="form-select" name="icon" id="icon">
+          <option value="default" id="default" selected>
             Default
-          </label>
-        </div>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="larry" value="/images/icons/larry.gif">
-          <label class="form-check-label" for="larry">
-            Larry
-          </label>
-        </div>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="pokeball" value="/images/icons/pokeball.svg">
-          <label class="form-check-label" for="pokeball">
+          </option>
+          <option value="/images/icons/pokeball.svg" id="pokeball">
             Pokeball
-          </label>
+          </option>
+          <option value="/images/icons/larry.gif" id="larry">
+            Larry
+          </option>
+        </select>
+      </div>
+
+      <div class="col-12 d-flex justify-content-between">
+        <div>
+          <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
+          <button type="button" id="update" class="btn btn-primary">Update</button>
+          <form action="/pins" method="post">
         </div>
-
-      </fieldset>
-
-      <div class="col-12">
-        <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
-        <button type="button" id="update" class="btn btn-primary">Update</button>
+          <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
+        </form>
       </div>
     </form>
   </div>
@@ -128,9 +123,6 @@
         <div class="card-body text-dark">
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
-          <form action="/pins" method="post">
-            <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
-          </form>
         </div>
       </div>
     <% } %>
