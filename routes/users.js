@@ -7,13 +7,13 @@
 
 const express = require('express');
 const router  = express.Router();
-const query = require('../lib/psql');
+const DB = require('../lib/psql');
 const db = require('../db/queries');
 
 module.exports = () => {
   router.get("/", (req, res) => {
     const query = `SELECT * FROM users`;
-    query.query(query)
+    DB.query(query)
       .then(data => {
         const users = data.rows;
         res.send(users);
@@ -47,7 +47,7 @@ module.exports = () => {
     WHERE user_id = $1
     ;`;
     const values = [user];
-    query.query(query, values)
+    DB.query(query, values)
       .then(data => {
         const maps = data.rows;
         res.send(maps);
@@ -67,7 +67,7 @@ module.exports = () => {
     WHERE users.id = $1 AND maps.id = $2
     ;`;
     const values = [user, map];
-    query.query(query, values)
+    DB.query(query, values)
       .then(data => {
         const map = data.rows[0];
         res.send(map);
@@ -88,7 +88,7 @@ module.exports = () => {
     WHERE pins.user_id = $1 AND map_id = $2
     ;`;
     const values = [user, map];
-    query.query(query, values)
+    DB.query(query, values)
       .then(data => {
         const pins = data.rows;
         res.send(pins);
@@ -109,7 +109,7 @@ module.exports = () => {
     WHERE pins.user_id = $1 AND map_id = $2 AND pins.id = $3
     ;`;
     const values = [user, map, pin];
-    query.query(query, values)
+    DB.query(query, values)
       .then(data => {
         const pin = data.rows[0];
         res.send(pin);
