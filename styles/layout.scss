@@ -33,9 +33,9 @@ section.maps {
   margin-bottom: 4em;
 }
 
-/*******************
-* Two Column Pages *
-*******************/
+/****************************
+* Two Column Pages / Sticky *
+*****************************/
 // Any sticky elements to left of the page
 .grid {
   display: grid;
@@ -56,6 +56,18 @@ section.maps {
   }
 }
 
+/********************************
+* Two Column Pages / Non-Sticky *
+********************************/
+.left {
+  margin-top: 120px;
+
+  .form-container,
+  .map-info-container {
+    height: 80vh;
+  }
+}
+
 /************
 * Home Page *
 *************/
@@ -73,11 +85,12 @@ section.maps {
 **************/
 
 .create-form-container {
-  max-width: 70vw;
+  min-width: 500px;
+  max-width: 40vw;
   margin: 0 auto;
-  margin-top: 15vh;
+  margin-top: 12vh;
 }
 
-/**************
-* Create Form *
-**************/
+/************
+* Edit Form *
+*************/
