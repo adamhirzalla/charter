@@ -55,6 +55,14 @@ function addPin(mapId, data) {
   });
 }
 
+function updatePin(pinId, data) {
+  return $.ajax({
+    method: 'post',
+    url: `/pins/${pinId}`,
+    data
+  });
+}
+
 function removePin(pinId) {
   return $.ajax({
     method: 'post',

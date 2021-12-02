@@ -89,6 +89,20 @@ const addPin = (userId, mapId, data) => {
     .catch(err => console.log(err.message));
 };
 
+const updatePin = (pinId, data) => {
+  const { title, lat, long, icon, description, img } = data;
+  const values = [pinId, title, lat, long, icon, description, img];
+  const query = `
+  UPDATE pins
+  SET
+  title = $2, lat = $3, long = $4, icon = $5, description = $6, img = $7
+  WHERE id = $1 RETURNING *`;
+  return db
+    .query(query, values)
+    .then(data => data.rows[0])
+    .catch(err => console.log(err.message));
+};
+
 const removePin = (pinId) => {
   const query = `DELETE FROM pins WHERE id = $1`;
   const values = [pinId];
@@ -165,6 +179,7 @@ module.exports = {
   getAllMapPins,
   getMap,
   addPin,
+  updatePin,
   removePin,
   addMap,
   getUser,

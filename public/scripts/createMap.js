@@ -11,7 +11,8 @@ const createMap = function(map) {
       mapTypeControl: false,
       fullscreenControl: false,
       streetViewControl: false,
-      mapID: map.id
+      dbMapId: map.id,
+      dbMap: map
     });
     getAllMapPins(map.id)
       .then(pins => {

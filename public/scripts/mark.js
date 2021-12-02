@@ -21,6 +21,6 @@ const addMarker = (position, map) => {
     scaledSize: new google.maps.Size(40, 55)
   });
   window.googleMarker.setPosition(position);
-  $('#lat').val(position.toJSON().lat);
-  $('#long').val(position.toJSON().lng);
+  $('#lat').val(Math.round(position.toJSON().lat * 10000) / 10000);
+  $('#long').val(Math.round(position.toJSON().lng * 10000) / 10000);
 };

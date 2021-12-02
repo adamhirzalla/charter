@@ -8,6 +8,7 @@
 const express = require('express');
 const db = require('../db/queries');
 const router  = express.Router();
+const chalk = require('chalk');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -46,7 +47,13 @@ module.exports = () => {
   router.post("/", (req, res)=>{
     const pinId = req.body.pinId;
     db.removePin(pinId);
-    return;
+  });
+
+  router.post("/:pinId", (req, res)=>{
+    const pinId = req.params.pinId;
+    const data = req.body;
+    db.updatePin(pinId, data);
+    res.send('OOF');
   });
 
   return router;
