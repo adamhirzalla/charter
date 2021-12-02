@@ -62,7 +62,7 @@
       <%} else { %>
       <% for (const map of maps) { %>
         <% if (map.is_public || Number(userId) === map.user_id) { %>
-        <div class="card map-card map-card-small" >
+        <div class="card map-card map-card-small shadow-lg border-top-0" >
           <div id="map-<%=map.id%>" class="map-container">
 
           </div>
