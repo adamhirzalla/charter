@@ -53,7 +53,7 @@
   height: 130px;
   width: 130px;
   border: 3px solid #fff;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 
@@ -61,9 +61,18 @@
   border-radius: 5px;
   padding-left: 20px;
   padding-right: 20px;
-  height: 35px
+  height: 35px;
 }
 
 .stats span {
-  font-size: 29px
+  font-size: 29px;
+}
+
+/*****************
+* Map Info Cards *
+*****************/
+
+.map-info {
+  height: 300px;
+  width: 100%;
 }
