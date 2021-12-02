@@ -52,14 +52,14 @@
   <!-- Navbar ENDS -->
 
   <!-- List of small map cards -->
-  <section id="maps" class="maps">
+  <section id="maps" class="maps small-maps-container">
     <!-- Maps should be rendered inside this section -->
     <% if (!maps.length) { %>
       <p> No maps exist</p>
       <%} else { %>
       <% for (const map of maps) { %>
         <% if (map.is_public || Number(userId) === map.user_id) { %>
-        <div class="card map-card" >
+        <div class="card map-card map-card-small" >
           <div id="map-<%=map.id%>" class="map-container">
 
           </div>
