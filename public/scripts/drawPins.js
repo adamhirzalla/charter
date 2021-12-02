@@ -50,5 +50,7 @@ const getIcon = (path) => {
     return 'pokeball';
   case '/images/icons/poke-marker.svg':
     return 'default';
+  case '/images/icons/shop.svg':
+    return 'store';
   }
 };
