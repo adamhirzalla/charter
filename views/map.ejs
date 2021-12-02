@@ -51,19 +51,27 @@
   <%- include('./partials/_navbar'); %>
   <!-- Navbar ENDS -->
 
+
+<main class='grid'>
+  <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
+    <p> Map doesnt belong to you</p>
+  <%} else { %>
+
+<!-- Edit Pin Form -->
+  <section class="map-info">
+    <div class="body text-dark">
+      <h5 class="title"><%=map.title%></h5>
+      <p class="text"><%=map.description%></p>
+    </div>
+  </section>
+
   <!-- List of small map cards -->
   <section id="maps" class="maps">
     <!-- Maps should be rendered inside this section -->
-    <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
-      <p> Map doesnt belong to you</p>
-    <%} else { %>
       <div class="card map-card" >
         <div id="map-<%=map.id%>" class="map-container">
         </div>
-        <div class="card-body text-dark">
-          <h5 class="card-title"><%=map.title%></h5>
-          <p class="card-text"><%=map.description%></p>
-        </div>
+
         <form action="/maps/<%=map.id%>/edit">
           <button id="edit-<%=map.id%>" type="submit" class="btn btn-primary">Edit</button>
           <button id="fav-<%=map.id%>" type = "button" class="btn btn-dark fav"> favourite </button>
@@ -71,8 +79,9 @@
       </div>
     <% } %>
 
-
   </section>
+</main>
+
 </body>
 
 </html>
