@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
   res.redirect('/maps');
 });
 
-app.get("/profile", (req, res) => {
+/* app.get("/profile", (req, res) => {
   const userId = req.session.userID;
   db.getAllUserMaps(userId)
     .then(maps => {
@@ -69,7 +69,7 @@ app.get("/profile", (req, res) => {
       };
       res.render("profile", templateVars);
     });
-});
+}); */
 
 
 app.get('/login/:id', (req, res) => {
