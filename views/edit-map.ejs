@@ -60,59 +60,61 @@
   <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
     <p> Map doesnt belong to you</p>
   <%} else { %>
-  <form id="edit-map" action="/maps/<%=map.id%>/pins" method="post"  class="row g-3 m-5">
-    <h1>--------------------------Edit Pin--------------------------</h1>
-    <div class="col-md-6">
-      <label for="lat" class="form-label">Latitude</label>
-      <input class="form-control" name="lat" id="lat" type="text">
-    </div>
-    <div class="col-md-6">
-      <label for="long" class="form-label">Longitude</label>
-      <input class="form-control" name="long" id="long" type="text">
-    </div>
-    <div class="col-md-12">
-      <label for="title" class="form-label">Title</label>
-      <input class="form-control" name="title" id="title" type="text">
-    </div>
-    <div class="col-md-12">
-      <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" name="description" type="text" id="description"></textarea>
-    </div>
-    <div class="col-md-12">
-      <label for="image-url" class="form-label">Image URL</label>
-      <input class="form-control" name="image-url" id="image-url" type="text">
-    </div>
-
-    <fieldset class="col-md-12">
-      <legend class="col-form-label pt-0">Pin Icon:</legend>
-
-      <div class="form-check col-md-2">
-        <input class="form-check-input" type="radio" name="icon" id="default" value="/images/icons/poke-marker.svg" checked>
-        <label class="form-check-label" for="default">
-          Default
-        </label>
+    <div class="form-container ms-5 shadow-lg border-top-0">
+      <form id="edit-map" action="/maps/<%=map.id%>/pins" method="post"  class="row g-3 m-5">
+        <h1 class="text-center">Edit Pin</h1>
+        <div class="col-md-6">
+          <label for="lat" class="form-label">Latitude</label>
+        <input class="form-control" name="lat" id="lat" type="text">
       </div>
-
-      <div class="form-check col-md-2">
-        <input class="form-check-input" type="radio" name="icon" id="larry" value="/images/icons/larry.gif">
-        <label class="form-check-label" for="larry">
-          Larry
-        </label>
+      <div class="col-md-6">
+        <label for="long" class="form-label">Longitude</label>
+        <input class="form-control" name="long" id="long" type="text">
       </div>
-
-      <div class="form-check col-md-2">
-        <input class="form-check-input" type="radio" name="icon" id="pokeball" value="/images/icons/pokeball.svg">
-        <label class="form-check-label" for="pokeball">
-          Pokeball
-        </label>
+      <div class="col-md-12">
+        <label for="title" class="form-label">Title</label>
+        <input class="form-control" name="title" id="title" type="text">
       </div>
-
-    </fieldset>
-
-    <div class="col-12">
-      <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </form>
+      <div class="col-md-12">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" type="text" id="description"></textarea>
+      </div>
+      <div class="col-md-12">
+        <label for="image-url" class="form-label">Image URL</label>
+        <input class="form-control" name="image-url" id="image-url" type="text">
+      </div>
+  
+      <fieldset class="col-md-12">
+        <legend class="col-form-label pt-0">Pin Icon:</legend>
+  
+        <div class="form-check col-md-2">
+          <input class="form-check-input" type="radio" name="icon" id="default" value="/images/icons/poke-marker.svg" checked>
+          <label class="form-check-label" for="default">
+            Default
+          </label>
+        </div>
+  
+        <div class="form-check col-md-2">
+          <input class="form-check-input" type="radio" name="icon" id="larry" value="/images/icons/larry.gif">
+          <label class="form-check-label" for="larry">
+            Larry
+          </label>
+        </div>
+  
+        <div class="form-check col-md-2">
+          <input class="form-check-input" type="radio" name="icon" id="pokeball" value="/images/icons/pokeball.svg">
+          <label class="form-check-label" for="pokeball">
+            Pokeball
+          </label>
+        </div>
+  
+      </fieldset>
+  
+      <div class="col-12">
+        <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
 
   <!-- List of small map cards -->
