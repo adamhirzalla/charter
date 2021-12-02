@@ -28,6 +28,19 @@ const getAllMaps = (options = {}, limit = 5) => {
     .catch(err => console.log(err.message));
 };
 
+/* const getAllPubUserMaps = (userId, options, limit = 5) => {
+  const query = `
+    SELECT maps.* FROM maps
+    JOIN users ON users.id = user_id
+    WHERE user_id = $1 AND is_public;
+    `;
+  const values = [userId];
+  return db
+    .query(query, values)
+    .then(data => data.rows)
+    .catch(err => console.log(err.message));
+}; */
+
 const getAllUserMaps = (userId, options, limit = 5) => {
   const query = `
     SELECT maps.* FROM maps
@@ -101,8 +114,10 @@ const addMap = (data) => {
 
 const getFavMaps = (userId) => {
   const query = `
-  SELECT * FROM favorites
-  WHERE user_id = $1`;
+  SELECT * FROM maps
+  WHERE id IN (SELECT (map_id) FROM favorites
+  WHERE favorites.user_id = $1 ORDER BY map_id)
+ `;
   const values = [userId];
   return db
     .query(query, values)
