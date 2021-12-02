@@ -7,12 +7,13 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../lib/psql');
+const query = require('../lib/psql');
+const db = require('../db/queries');
 
 module.exports = () => {
   router.get("/", (req, res) => {
     const query = `SELECT * FROM users`;
-    db.query(query)
+    query.query(query)
       .then(data => {
         const users = data.rows;
         res.send(users);
@@ -24,19 +25,16 @@ module.exports = () => {
       });
   });
 
-  router.get("/:user", (req, res) => {
-    const user = req.params.user;
-    const query = `SELECT * FROM users WHERE id = $1`;
-    const values = [user];
-    db.query(query, values)
-      .then(data => {
-        const user = data.rows[0];
-        res.send(user);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+  router.get("/:userId", (req, res) => {
+    const userId = req.params.userId;
+    db.getAllUserMaps(userId)
+      .then(maps => {
+        const templateVars = {
+          apiKey: process.env.API_KEY,
+          userId,
+          maps
+        };
+        res.render("profile", templateVars);
       });
   });
 
@@ -48,7 +46,7 @@ module.exports = () => {
     WHERE user_id = $1
     ;`;
     const values = [user];
-    db.query(query, values)
+    query.query(query, values)
       .then(data => {
         const maps = data.rows;
         res.send(maps);
@@ -68,7 +66,7 @@ module.exports = () => {
     WHERE users.id = $1 AND maps.id = $2
     ;`;
     const values = [user, map];
-    db.query(query, values)
+    query.query(query, values)
       .then(data => {
         const map = data.rows[0];
         res.send(map);
@@ -89,7 +87,7 @@ module.exports = () => {
     WHERE pins.user_id = $1 AND map_id = $2
     ;`;
     const values = [user, map];
-    db.query(query, values)
+    query.query(query, values)
       .then(data => {
         const pins = data.rows;
         res.send(pins);
@@ -110,7 +108,7 @@ module.exports = () => {
     WHERE pins.user_id = $1 AND map_id = $2 AND pins.id = $3
     ;`;
     const values = [user, map, pin];
-    db.query(query, values)
+    query.query(query, values)
       .then(data => {
         const pin = data.rows[0];
         res.send(pin);

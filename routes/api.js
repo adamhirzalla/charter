@@ -22,9 +22,9 @@ module.exports = () => {
     res.send(user);
   });
 
-  router.get("/allUserMaps", (req, res) => {
-    const user = req.session.userID;
-    db.getAllUserMaps(user)
+  router.get("/allUserMaps/:userId", (req, res) => {
+    const userId = req.params.userId;
+    db.getAllUserMaps(userId)
       .then(maps => res.send(maps));
   });
 
