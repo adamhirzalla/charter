@@ -54,21 +54,40 @@
 
 <main class='grid'>
 
-  <!-- This is where the featured map goes -->
+  <!-- This is where User Info goes -->
   <div class="sticky">
-    <div class="card map-card">
-      <div id="NOTmap" class="map-container">
-      <!-- Map goes here -->
+
+
+      <div class="profile-card shadow-lg bg-body">
+          <div class="upper"> </div>
+          <div class="user text-center">
+              <div class="profile"> <img src="/images/icons/trainer-profile.png" class="rounded-circle" width="80"> </div>
+          </div>
+
+          <!-- img attribution -->
+          <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+          
+          <div class="text-center">
+              <h4 class="mb-0">Sass Ketchup</h4>
+              <span class="text-muted d-block mb-2">Gym Trainer</span>
+              <button class="btn btn-primary btn-sm profile-btn">Owned Maps</button>
+              <div class="d-flex justify-content-center align-items-center mt-4 px-4">
+                  <div class="stats">
+                      <h6 class="mb-0">Contributions</h6> <span>9001</span>
+                  </div>
+              </div>
+              <div class="mt-4">
+                <button class="btn btn-primary btn-sm profile-btn">Favourites</button>
+                <button class="btn btn-primary btn-sm profile-btn">Contributions</button>
+              </div>
+          </div>
       </div>
-      <div class="card-body text-dark">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
+
   </div>
 
   <!-- List of small map cards -->
   <section id="maps" class="maps">
+
     <!-- Maps should be rendered inside this section -->
     <% if (!maps.length) { %>
       <p> No maps exist</p>
