@@ -110,9 +110,14 @@
 
       </fieldset>
 
-      <div class="col-12">
-        <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
-        <button type="button" id="update" class="btn btn-primary">Update</button>
+      <div class="col-12 d-flex justify-content-between">
+        <div>
+          <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
+          <button type="button" id="update" class="btn btn-primary">Update</button>
+          <form action="/pins" method="post">
+        </div>
+          <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
+        </form>
       </div>
     </form>
   </div>
@@ -128,9 +133,6 @@
         <div class="card-body text-dark">
           <h5 class="card-title"><%=map.title%></h5>
           <p class="card-text"><%=map.description%></p>
-          <form action="/pins" method="post">
-            <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
-          </form>
         </div>
       </div>
     <% } %>
