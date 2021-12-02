@@ -31,7 +31,7 @@ const addInfoWindow = (marker, map) => {
     if (!window.lastInfoWindow) {
       window.lastInfoWindow = infoWindow;
     }
-    {
+    else {
       window.lastInfoWindow.close();
     }
     window.lastInfoWindow = infoWindow;
