@@ -7,10 +7,11 @@ function getUserMaps(userId) {
   });
 }
 
-function getUser() {
+function getUser(userId) {
+  const url = userId ? `/api/user/${userId}` : `/api/user`;
   return $.ajax({
     method: 'get',
-    url: `/api/me`
+    url
   });
 }
 
@@ -82,5 +83,12 @@ function addFav(mapId) {
     method: 'post',
     url: `/api/favs`,
     data: {mapId}
+  });
+}
+
+function getContMaps(userId) {
+  return $.ajax({
+    method: 'get',
+    url: `/api/contMaps/${userId}`
   });
 }

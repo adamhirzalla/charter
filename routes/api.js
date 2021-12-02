@@ -11,8 +11,14 @@ const db = require("../db/queries");
 
 module.exports = () => {
 
-  router.get("/me", (req, res) => {
+  router.get("/user", (req, res) => {
     const userId = req.session.userID;
+    db.getUser(userId)
+      .then(user => res.send(user));
+  });
+
+  router.get("/user/:userId", (req, res) => {
+    const userId = req.params.userId;
     db.getUser(userId)
       .then(user => res.send(user));
   });
@@ -57,6 +63,12 @@ module.exports = () => {
     const mapId = req.body.mapId;
     db.addFav(userId, mapId);
     res.status(200);
+  });
+
+  router.get("/contMaps/:userId", (req, res) => {
+    const userId = req.params.userId;
+    db.getContMaps(userId)
+      .then(maps => res.send(maps));
   });
 
   return router;

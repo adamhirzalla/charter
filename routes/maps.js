@@ -78,6 +78,7 @@ module.exports = () => {
   router.post("/:map/pins", (req, res)=>{
     const userId = req.session.userID;
     const mapId = req.params.map;
+    console.log(req.body);
     db.addPin(userId, mapId, req.body);
     res.redirect(`/maps/${mapId}/edit`);
   });
