@@ -23,7 +23,7 @@ html {
 // Any sticky elements to left of the page
 .grid {
   display: grid;
-  grid-template-columns: 4fr 3fr;
+  grid-template-columns: 2fr 5fr;
 
   .sticky {
     display: flex;
@@ -40,6 +40,7 @@ html {
 
     // Spacing between maps on right column
     .map-card {
+      margin: 0 auto;
       margin-bottom: 2em;
     }
   }
