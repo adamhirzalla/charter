@@ -36,6 +36,9 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
   <!-- Internal Styles -->
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -53,26 +56,28 @@
 
 
 <main class='grid'>
+  <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
+    <p> Map doesnt belong to you</p>
+  <%} else { %>
 
 <!-- Edit Pin Form -->
-
+  <section class="map-info-container">
+    <div class="card map-info text-dark shadow-lg border-top-0 p-5">
+      <h5 class="card-title text-center"><%=map.title%></h5>
+      <p class="card-text text text-center"><%=map.description%></p>
+    </div>
+  </section>
 
   <!-- List of small map cards -->
   <section id="maps" class="maps">
     <!-- Maps should be rendered inside this section -->
-    <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
-      <p> Map doesnt belong to you</p>
-    <%} else { %>
-      <div class="card map-card" >
+      <div class="card map-card shadow-lg border-top-0" >
         <div id="map-<%=map.id%>" class="map-container">
         </div>
-        <div class="card-body text-dark">
-          <h5 class="card-title"><%=map.title%></h5>
-          <p class="card-text"><%=map.description%></p>
-        </div>
-        <form action="/maps/<%=map.id%>/edit">
-          <button id="edit-<%=map.id%>" type="submit" class="btn btn-primary">Edit</button>
-          <button id="fav-<%=map.id%>" type = "button" class="btn btn-dark fav"> favourite </button>
+
+        <form action="/maps/<%=map.id%>/edit" class="d-flex justify-content-between p-2">
+          <button id="edit-<%=map.id%>" type="submit" class="btn btn-primary px-5">Edit</button>
+          <button id="fav-<%=map.id%>" type = "button" class="btn btn-dark fav"> <i class="fas fa-heart"></i> </button>
         </form>
       </div>
     <% } %>

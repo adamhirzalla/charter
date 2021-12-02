@@ -40,7 +40,7 @@ $(() => {
   $('#delete').on('click', (event) => {
     event.preventDefault();
     const marker = window.selectedMarker;
-    const pinId = marker.pinId;
+    const pinId = marker.pin.id;
     if (pinId) {
       marker.setMap(null);
       removePin(pinId);
