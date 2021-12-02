@@ -26,6 +26,9 @@ const getTheme = (theme) => {
   switch (theme) {
   case 'pokemon':
     return '93b06d228f001f87';
+  case 'black&white':
+    console.log('asdf');
+    return '33688789b1c87913';
   case 'default':
     return null;
   }
