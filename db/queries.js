@@ -78,11 +78,11 @@ const getAllMapPins = (mapId, options) => {
 };
 
 const addPin = (userId, mapId, data) => {
-  const { lat, long, icon, description } = data;
-  const values = [mapId, userId, lat, long, icon, description];
+  const { title, lat, long, icon, description } = data;
+  const values = [mapId, userId, title, lat, long, icon, description];
   const query = `
-    INSERT INTO pins (map_id, user_id, lat, long, icon, description)
-    VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+    INSERT INTO pins (map_id, user_id, title, lat, long, icon, description)
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
   return db
     .query(query, values)
     .then(data => data.rows[0])
@@ -116,7 +116,7 @@ const getFavMaps = (userId) => {
   const query = `
   SELECT * FROM maps
   WHERE id IN (SELECT (map_id) FROM favorites
-  WHERE favorites.user_id = $1 ORDER BY map_id)
+  WHERE favorites.user_id = $1) ORDER BY id
  `;
   const values = [userId];
   return db
@@ -146,6 +146,19 @@ const addFav = (userId, mapId) => {
     .catch(err => console.log(err.message));
 };
 
+const getContMaps = (userId) => {
+  const query = `
+  SELECT * FROM maps
+  WHERE id IN (SELECT DISTINCT (map_id) FROM pins
+  WHERE pins.user_id = $1) ORDER BY id
+ `;
+  const values = [userId];
+  return db
+    .query(query, values)
+    .then(data => data.rows)
+    .catch(err => console.log(err.message));
+};
+
 module.exports = {
   getAllMaps,
   getAllUserMaps,
@@ -158,5 +171,6 @@ module.exports = {
   getFavMaps,
   removeFav,
   addFav,
+  getContMaps,
 
 };
