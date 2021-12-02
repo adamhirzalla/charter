@@ -69,9 +69,7 @@
             <p class="card-text"><%=map.description%></p>
           </div>
           </a>
-          <form action="/users/<%=map.user_id%>" method="get">
-            <button type = "submit" class="btn btn-dark user"> view profile </button>
-          </form>
+            <button id="user-<%=map.user_id%>" type = "button" class="btn btn-dark prof"> view profile </button>
           <% if (userId) { %>
             <button id="fav-<%=map.id%>" type = "button" class="btn btn-dark fav"> favourite </button>
           <% } %>

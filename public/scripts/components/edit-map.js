@@ -4,9 +4,6 @@ $(() => {
   $(`#submit`).on('submit', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    if (!data.lat || !data.long) {
-      return;
-    }
     const mapId = window.googleMarker.map.mapId;
     addPin(mapId, data);
   });
