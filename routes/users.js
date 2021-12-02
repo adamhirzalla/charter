@@ -27,11 +27,12 @@ module.exports = () => {
 
   router.get("/:userId", (req, res) => {
     const userId = req.params.userId;
+    const cookie = req.session.userID;
     db.getAllUserMaps(userId)
       .then(maps => {
         const templateVars = {
           apiKey: process.env.API_KEY,
-          userId,
+          userId: cookie,
           maps
         };
         res.render("profile", templateVars);
