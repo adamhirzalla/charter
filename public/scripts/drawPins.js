@@ -27,6 +27,16 @@ const addInfoWindow = (marker, map) => {
   const infoWindow = new google.maps.InfoWindow({content});
   marker.addListener("click", () => {
     window.selectedMarker = marker;
+
+    if (!window.lastInfoWindow)
+    {
+      window.lastInfoWindow = infoWindow;
+    }
+    {
+      window.lastInfoWindow.close();
+    }
+    window.lastInfoWindow = infoWindow;
+
     marker.setDraggable(true);
     infoWindow.open({
       map,
