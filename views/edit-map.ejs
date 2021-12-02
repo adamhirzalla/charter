@@ -56,12 +56,12 @@
 <main class='grid'>
 
 <!-- Edit Pin Form -->
-<div class="sticky">
+<div class="left">
   <% if (!map || (!map.is_public && Number(userId) !== map.user_id)) { %>
     <p> Map doesnt belong to you</p>
   <%} else { %>
-    <div class="form-container ms-5 shadow-lg border-top-0">
-      <form id="edit-map" class="row g-3 m-5">
+    <div class="form-container ms-5 p-5 shadow-lg border-top-0">
+      <form id="edit-map" class="row g-3 px-1 pt-0">
         <h1 class="text-center">Edit Pin</h1>
         <div class="col-md-6">
           <label for="lat" class="form-label">Latitude</label>
