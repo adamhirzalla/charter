@@ -84,31 +84,21 @@
         <input class="form-control" name="image-url" id="image-url" type="text">
       </div>
 
-      <fieldset class="col-md-12">
-        <legend class="col-form-label pt-0">Pin Icon:</legend>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="default" value="/images/icons/poke-marker.svg" checked>
-          <label class="form-check-label" for="default">
+      <!-- List of Pin Icons -->
+      <div class="col-md-6 mb-4">
+        <label for="pin-icon">Pin Icon</label>
+        <select class="form-select" name="icon" id="icon">
+          <option value="default" id="default" selected>
             Default
-          </label>
-        </div>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="larry" value="/images/icons/larry.gif">
-          <label class="form-check-label" for="larry">
-            Larry
-          </label>
-        </div>
-
-        <div class="form-check col-md-2">
-          <input class="form-check-input" type="radio" name="icon" id="pokeball" value="/images/icons/pokeball.svg">
-          <label class="form-check-label" for="pokeball">
+          </option>
+          <option value="/images/icons/pokeball.svg" id="pokeball">
             Pokeball
-          </label>
-        </div>
-
-      </fieldset>
+          </option>
+          <option value="/images/icons/larry.gif" id="larry">
+            Larry
+          </option>
+        </select>
+      </div>
 
       <div class="col-12 d-flex justify-content-between">
         <div>
