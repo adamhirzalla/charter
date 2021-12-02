@@ -19,14 +19,23 @@ const drawPins = (pins, map) => {
 };
 
 const addInfoWindow = (marker, map) => {
-  const {pin} = marker;
+  const { pin } = marker;
   const content = `
   <h1>${pin.title}</h1>
   <p>${pin.description}</p>
   `;
-  const infoWindow = new google.maps.InfoWindow({content});
+  const infoWindow = new google.maps.InfoWindow({ content });
   marker.addListener("click", () => {
     window.selectedMarker = marker;
+
+    if (!window.lastInfoWindow) {
+      window.lastInfoWindow = infoWindow;
+    }
+    else {
+      window.lastInfoWindow.close();
+    }
+    window.lastInfoWindow = infoWindow;
+
     marker.setDraggable(true);
     infoWindow.open({
       map,
@@ -44,11 +53,11 @@ const addInfoWindow = (marker, map) => {
 };
 const getIcon = (path) => {
   switch (path) {
-  case '/images/icons/larry.gif':
-    return 'larry';
-  case '/images/icons/pokeball.svg':
-    return 'pokeball';
-  case '/images/icons/poke-marker.svg':
-    return 'default';
+    case '/images/icons/larry.gif':
+      return 'larry';
+    case '/images/icons/pokeball.svg':
+      return 'pokeball';
+    case '/images/icons/poke-marker.svg':
+      return 'default';
   }
 };
