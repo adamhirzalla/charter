@@ -9,7 +9,7 @@
   border-radius: 15px;
   background-color: #fff;
   position: relative;
-  height: 50vh;
+  min-height: 50vh;
 }
 
 .upper {
@@ -21,7 +21,8 @@
 }
 
 .user {
-  position: relative
+  position: relative;
+  height: 100px;
 }
 
 .profile {
@@ -42,7 +43,8 @@
   border-radius: 50%
 }
 
-.friend {
+
+.profile-btn {
   border-radius: 5px;
   padding-left: 20px;
   padding-right: 20px;
