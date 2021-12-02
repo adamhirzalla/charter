@@ -14,7 +14,8 @@ function allMaps() {
 }
 
 function userMaps() {
-  getUserMaps()
+  const userId = window.location.href.split('/').splice(-1);
+  getUserMaps(userId)
     .then(maps => {
       maps.forEach(map => createMap(map));
     })

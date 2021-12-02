@@ -1,9 +1,9 @@
 /* eslint-disable func-style */
 
-function getUserMaps() {
+function getUserMaps(userId) {
   return $.ajax({
     method: 'get',
-    url: `/api/allUserMaps`,
+    url: `/api/allUserMaps/${userId}`,
   });
 }
 
