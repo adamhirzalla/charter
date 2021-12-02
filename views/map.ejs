@@ -75,8 +75,8 @@
         <div id="map-<%=map.id%>" class="map-container">
         </div>
 
-        <form action="/maps/<%=map.id%>/edit">
-          <button id="edit-<%=map.id%>" type="submit" class="btn btn-primary">Edit</button>
+        <form action="/maps/<%=map.id%>/edit" class="d-flex justify-content-between p-2">
+          <button id="edit-<%=map.id%>" type="submit" class="btn btn-primary px-5">Edit</button>
           <button id="fav-<%=map.id%>" type = "button" class="btn btn-dark fav"> <i class="fas fa-heart"></i> </button>
         </form>
       </div>
