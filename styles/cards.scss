@@ -72,7 +72,23 @@
 * Map Info Cards *
 *****************/
 
-.map-info {
-  height: 300px;
+.map-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
   width: 100%;
+
+  .map-info {
+    width: 80%;
+    height: 600px;
+  }
+
+  h5 {
+    font-size: 3rem;
+  }
+  
+  p {
+    font-size: 1.5rem;
+  }
 }
