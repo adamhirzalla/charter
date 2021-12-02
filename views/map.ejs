@@ -60,13 +60,15 @@
     <p> Map doesnt belong to you</p>
   <%} else { %>
 
-<!-- Edit Pin Form -->
-  <section class="map-info-container">
-    <div class="card map-info text-dark shadow-lg border-top-0 p-5">
-      <h5 class="card-title text-center"><%=map.title%></h5>
-      <p class="card-text text text-center"><%=map.description%></p>
-    </div>
-  </section>
+  <!-- Map info -->
+  <div class="left">
+    <section class="map-info-container ms-5">
+      <div class="card map-info text-dark shadow-lg border-top-0 p-5">
+        <h5 class="card-title text-center"><%=map.title%></h5>
+        <p class="card-text text text-center"><%=map.description%></p>
+      </div>
+    </section>
+  </div>
 
   <!-- List of small map cards -->
   <section id="maps" class="maps">
