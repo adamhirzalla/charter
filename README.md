@@ -11,11 +11,10 @@
 Charter is a Node web application that allows users to collaboratively build maps and share points of interest with each other.
 
 ## Screenshots
-![](./docs/)
-![](./docs/)
-![](./docs/)
-![](./docs/)
-![](./docs/)
+![Home Page](./docs/images/home.png)
+![Single Map Page](./docs/images/single-map.png)
+![Edit Pin](./docs/images/edit-pin.png)
+![Profile Page](./docs/images/profile-page.png)
 
 
 ## Features
