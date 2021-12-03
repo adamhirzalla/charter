@@ -11,21 +11,13 @@ const addMarker = (position, map) => {
       draggable: true,
       animation: google.maps.Animation.BOUNCE,
       icon: {
-<<<<<<< HEAD
-        url: $('#icon option:selected').val(),
-=======
         url: $(`#icon`).val() === 'default' ? null : $(`#icon`).val(),
->>>>>>> frontend/new-markers
         scaledSize: new google.maps.Size(40, 55)
       }
     });
   }
   window.googleMarker.setIcon({
-<<<<<<< HEAD
-    url: $('#icon option:selected').val(),
-=======
     url: $(`#icon`).val() === 'default' ? null : $(`#icon`).val(),
->>>>>>> frontend/new-markers
     scaledSize: new google.maps.Size(40, 55)
   });
   window.googleMarker.setPosition(position);
