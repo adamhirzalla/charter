@@ -9,7 +9,7 @@ const drawPins = (pins, map) => {
       title: pin.title,
       animation: google.maps.Animation.DROP,
       icon: {
-        url: pin.icon,
+        url: pin.icon === 'default' ? null : pin.icon,
         scaledSize: new google.maps.Size(40, 55)
       },
       pin
@@ -30,8 +30,7 @@ const addInfoWindow = (marker, map) => {
 
     if (!window.lastInfoWindow) {
       window.lastInfoWindow = infoWindow;
-    }
-    else {
+    } else {
       window.lastInfoWindow.close();
     }
     window.lastInfoWindow = infoWindow;
@@ -48,7 +47,7 @@ const addInfoWindow = (marker, map) => {
     $('#image-url').val(pin.image);
     $('#lat').val(Math.round(marker.getPosition().toJSON().lat * 10000) / 10000);
     $('#long').val(Math.round(marker.getPosition().toJSON().lng * 10000) / 10000);
-    $(`#${icon}`).prop('checked', true);
+    $(`#icon`).val(pin.icon);
   });
 };
 const getIcon = (path) => {

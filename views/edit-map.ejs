@@ -88,14 +88,33 @@
       <div class="col-md-6 mb-4">
         <label for="pin-icon">Pin Icon</label>
         <select class="form-select" name="icon" id="icon">
+<<<<<<< HEAD
           <option value="" id="default" selected>
+=======
+          <option id="default" value="default" selected>
+>>>>>>> frontend/new-markers
             Default
           </option>
-          <option value="/images/icons/pokeball.svg" id="pokeball">
+          <option id="larry" value="/images/icons/larry.gif">
+            Larry
+          </option>
+          <option id="poke-marker" value="/images/icons/poke-marker.svg">
+            Poke-marker
+          </option>
+          <option id="pokeball" value="/images/icons/pokeball.svg">
             Pokeball
           </option>
-          <option value="/images/icons/larry.gif" id="larry">
-            Larry
+          <option id="transit" value="/images/icons/transit.svg">
+            Transit
+          </option>
+          <option id="store" value="/images/icons/store.svg">
+            Store
+          </option>
+          <option id="cinema" value="/images/icons/cinema.svg">
+            Cinema
+          </option>
+          <option id="bank" value="/images/icons/bank.svg">
+            Bank
           </option>
           <option value="/images/icons/totoro.gif" id="totoro">
             Larry
@@ -110,10 +129,8 @@
         <div>
           <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
           <button type="button" id="update" class="btn btn-primary">Update</button>
-          <form action="/pins" method="post">
         </div>
           <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
-        </form>
       </div>
     </form>
   </div>
