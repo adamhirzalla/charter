@@ -1,11 +1,11 @@
 INSERT INTO maps (user_id, title, description, is_public, theme)
 VALUES
-(1, 'Places to visit', 'Awesome map description1', true, 'default'),
-(1, 'Adams Map2', 'map 2 description', true, 'pokemon'),
-(1, 'Adams definitelyPublic Map', 'Awesome definitelyPublic map description', true, 'pokemon'),
-(2, 'Leons Map1', 'leons map description', true, 'default'),
-(2, 'Leons Map2', 'second map desc for leon', true, 'default'),
-(2, 'Leons definitelyPublic Map', 'definitelyPublic mapppp', true, 'pokemon'),
-(3, 'Josephs Map1', 'sheeeeeeeeeesh', true, 'default'),
-(3, 'Josephs Map2', 'desc 3 for josephs mapppppppppppppp', true, 'pokemon'),
-(3, 'Josephs definitelyPublic Map', 'invisible description', true, 'default');
+(1, 'Top Ottawa Restaurants', 'The most amazing restuarants in Ottawa!', true, 'default'),
+(1, 'Film Locations', 'Film set locations in Ottawa!', true, 'default'),
+(1, 'Childhood Memories', 'My favourite childhood spots', true, 'default'),
+(2, 'Pokemon GO!', 'Places to catch rare pokemon.', true, 'default'),
+(2, 'BOOK SHOPS <3', 'Super cute locally owned book shops!', true, 'default'),
+(2, 'Local Groceries', 'Locally sourced grocers.', true, 'default'),
+(3, 'High School Football', 'Highschools I played at 2008', true, 'default'),
+(3, 'Walking Time', 'Best neighbourhoods for a stroll', true, 'default'),
+(3, 'Butcher Shops', 'Get your steaks here!', true, 'default');
