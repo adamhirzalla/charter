@@ -69,6 +69,7 @@
           <div class="text-center">
               <h4 id="username" class="mb-0">Sass Ketchup</h4>
               <span class="text-muted d-block mb-2">API Trainer</span>
+              <h6 id="ownedCount" class="d-block mb-2">Maps: <%=maps.length%></h6>
               <button id="owned" class="btn btn-primary btn-sm profile-btn">Owned Maps</button>
               <div class="d-flex justify-content-around align-items-center mt-4 px-4 pb-5">
                   <div class="stats">
@@ -89,9 +90,7 @@
   <section id="maps" class="maps">
 
     <!-- Maps should be rendered inside this section -->
-    <% if (!maps.length) { %>
-      <p> No maps exist</p>
-    <%} else { %>
+    <% if(maps.length) { %>
       <% for (const map of maps) { %>
       <div class="card map-card shadow-lg border-top-0" >
         <div id="map-<%=map.id%>" class="map-container">

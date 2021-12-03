@@ -5,7 +5,7 @@ const createMap = function(map) {
   const theme = getTheme(map.theme);
   if ($(`#map-${map.id}`).length) {
     let googleMap = new google.maps.Map(document.querySelector(`#map-${map.id}`), {
-      zoom: 12,
+      zoom: 13,
       center: { lat: 45.42182698501992, lng: -75.69454699197138 },
       mapId: theme,
       mapTypeControl: false,

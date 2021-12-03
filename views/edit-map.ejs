@@ -141,10 +141,12 @@
       <div class="card map-card shadow-lg border-top-0" >
         <div id="map-<%=map.id%>" class="map-container">
         </div>
-        <div class="card-body text-dark">
-          <h5 class="card-title"><%=map.title%></h5>
-          <p class="card-text"><%=map.description%></p>
-        </div>
+        <a style="text-decoration: none;" href="/maps/<%=map.id%>">
+          <div class="card-body text-dark">
+            <h5 class="card-title"><%=map.title%></h5>
+            <p class="card-text"><%=map.description%></p>
+          </div>
+        </a>
       </div>
     <% } %>
 
