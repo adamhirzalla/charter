@@ -88,13 +88,16 @@
       <div class="col-md-6 mb-4">
         <label for="pin-icon">Pin Icon</label>
         <select class="form-select" name="icon" id="icon">
-          <option value="default" id="default" selected>
+          <option id="default" value="default" selected>
             Default
           </option>
-          <option value="/images/icons/pokeball.svg" id="pokeball">
+          <option id="poke-marker" value="/images/icons/poke-marker.svg">
+            Poke-marker
+          </option>
+          <option id="pokeball" value="/images/icons/pokeball.svg">
             Pokeball
           </option>
-          <option value="/images/icons/larry.gif" id="larry">
+          <option id="larry" value="/images/icons/larry.gif">
             Larry
           </option>
         </select>
@@ -104,10 +107,8 @@
         <div>
           <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
           <button type="button" id="update" class="btn btn-primary">Update</button>
-          <form action="/pins" method="post">
         </div>
           <button id="delete" type="submit" class="btn btn-danger">Delete Pin</button>
-        </form>
       </div>
     </form>
   </div>
