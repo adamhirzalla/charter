@@ -28,6 +28,20 @@ const getTheme = (theme) => {
     return '93b06d228f001f87';
   case 'black&white':
     return '33688789b1c87913';
+  case 'night-vision':
+    return '75f5b64bea7bed20';
+  case 'neutral-blue':
+    return 'eb5451a5ec082b39';
+  case 'light-colliers':
+    return '45f2c1406dba1f26';
+  case 'dark':
+    return '4a9b7b94db58c972';
+  case 'blue-water':
+    return '1018eed72aa03c31';
+  case 'avocado':
+    return '9ce636bb6636338f';
+  case 'assassins-creed':
+    return 'e762da3c9d3b47b6';
   case 'default':
     return null;
   }

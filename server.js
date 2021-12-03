@@ -58,20 +58,6 @@ app.get("/", (req, res) => {
   res.redirect('/maps');
 });
 
-/* app.get("/profile", (req, res) => {
-  const userId = req.session.userID;
-  db.getAllUserMaps(userId)
-    .then(maps => {
-      const templateVars = {
-        apiKey: process.env.API_KEY,
-        userId,
-        maps
-      };
-      res.render("profile", templateVars);
-    });
-}); */
-
-
 app.get('/login/:id', (req, res) => {
   const user = req.params.id;
   req.session.userID = user;
