@@ -9,6 +9,7 @@
   - [Resources](#resources)
 # Summary
 Charter is a Node web application that allows users to collaboratively build maps and share points of interest with each other.
+Demo app can be viewed at [charter.hirzalla.ca](https://charter-map.herokuapp.com/)
 
 ## Features
 - Create, and share a map!
