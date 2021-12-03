@@ -14,11 +14,7 @@ $(() => {
           const googleMap = createMap(map);
           window.googleMarker = null;
           mark(googleMap);
-          $('#title').val('')
-          $('#lat').val('')
-          $('#long').val('')
-          $('#description').val('')
-          $('#image-url').val('')
+          $('#edit-map')[0].reset();
         });
     }
   });
@@ -43,11 +39,7 @@ $(() => {
           const googleMap = createMap(map);
           window.googleMarker = null;
           mark(googleMap);
-          $('#title').val('')
-          $('#lat').val('')
-          $('#long').val('')
-          $('#description').val('')
-          $('#image-url').val('')
+          $('#edit-map')[0].reset();
         });
     }
   });
