@@ -35,6 +35,18 @@ const addInfoWindow = (marker, map) => {
     }
     window.lastInfoWindow = infoWindow;
 
+    if (window.googleMarker) {
+      window.googleMarker.setMap(null);
+      window.googleMarker = null;
+    }
+
+    window.selectedMarker.addListener("drag", (event) => {
+      $('#lat').val(Math.round(window.selectedMarker.getPosition().toJSON().lat * 10000) / 10000);
+      $('#long').val(Math.round(window.selectedMarker.getPosition().toJSON().lng * 10000) / 10000);
+    }
+
+    );
+
     marker.setDraggable(true);
     infoWindow.open({
       map,
@@ -44,7 +56,7 @@ const addInfoWindow = (marker, map) => {
     const icon = getIcon(pin.icon);
     $('#title').val(pin.title);
     $('#description').val(pin.description);
-    $('#image-url').val(pin.image);
+    $('#image-url').val(pin.img);
     $('#lat').val(Math.round(marker.getPosition().toJSON().lat * 10000) / 10000);
     $('#long').val(Math.round(marker.getPosition().toJSON().lng * 10000) / 10000);
     $(`#icon`).val(pin.icon);
