@@ -2,8 +2,8 @@
 
 ## Table Of Contents
 - [Summary](#summary)
-  - [Screenshots](#screenshots)
   - [Features](#features)
+  - [Screenshots](#screenshots)
 - [Getting Started](#getting-started)
   - [Dependencies](#dependencies)
   - [Resources](#resources)
