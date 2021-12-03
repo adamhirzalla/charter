@@ -10,19 +10,20 @@
 # Summary
 Charter is a Node web application that allows users to collaboratively build maps and share points of interest with each other.
 
+## Features
+- Create, and share a map!
+- Add, edit, or delete pins to a map!
+- View other users' profiles along with their maps/contributions/favorites! 
+- Choose from a bunch of marker icons and map themes!
+- Add descriptions and images to pins to be viewed by others!
+- Collaborate with others on their maps!
+- Save your favourite maps!
+
 ## Screenshots
 ![Home Page](./docs/images/home.png)
 ![Single Map Page](./docs/images/single-map.png)
 ![Edit Pin](./docs/images/edit-pin.png)
 ![Profile Page](./docs/images/profile-page.png)
-
-
-## Features
-- Create, and share a map
-- Add, edit, or delete pins to a map
-- Add descriptions and images to pins
-- Collaborate with others on their maps
-- Save your favourite maps
 
 # Getting Started
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
