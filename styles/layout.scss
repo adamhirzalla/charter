@@ -1,17 +1,6 @@
-// See: https://sass-lang.com/
-*, *::after, *::after {
-  box-sizing: inherit;
-}
-
-body,
-html {
-  margin: 0;
-}
-
-html {
-  box-sizing: border-box;
-  font-size: 100%;
-}
+/**********************
+* Layout / Alignment  *
+**********************/
 
 // Ensures all maps stay inside their containers!!
 .map-container {
@@ -90,7 +79,3 @@ section.maps {
   margin: 0 auto;
   margin-top: 12vh;
 }
-
-/************
-* Edit Form *
-*************/
