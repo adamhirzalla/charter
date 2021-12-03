@@ -17,17 +17,11 @@ $(() => {
 
   $(`#update`).on('click', function(event) {
     event.preventDefault();
+    $form = $(this).parent().parent().parent();
     const pinId = window.selectedMarker.pin.id;
     const map = window.selectedMarker.map.dbMap;
     const mapId = map.id;
-    const data = {
-      title: $('#title').val(),
-      lat: $('#lat').val(),
-      long: $('#long').val(),
-      description: $('#description').val(),
-      img: $('#image-url').val(),
-      icon: $('input:checked').val(),
-    };
+    const data = $form.serialize();
     updatePin(pinId, data)
       .then(() => {
         $(`#map-${mapId}`).empty();
