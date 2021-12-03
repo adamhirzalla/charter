@@ -11,15 +11,17 @@ const addMarker = (position, map) => {
       draggable: true,
       animation: google.maps.Animation.BOUNCE,
       icon: {
-        url: $(`#icon`).val() === 'default' ? null : $(`#icon`).val(),
+        url: $(`#icon`).val(),
         scaledSize: new google.maps.Size(40, 55)
-      }
+      },
     });
   }
-  window.googleMarker.setIcon({
-    url: $(`#icon`).val() === 'default' ? null : $(`#icon`).val(),
-    scaledSize: new google.maps.Size(40, 55)
-  });
+  if ($(`#icon`).val() !== 'default') {
+    window.googleMarker.setIcon({
+      url: $(`#icon`).val(),
+      scaledSize: new google.maps.Size(40, 55)
+    });
+  }
   window.googleMarker.setPosition(position);
   $('#lat').val(Math.round(position.toJSON().lat * 10000) / 10000);
   $('#long').val(Math.round(position.toJSON().lng * 10000) / 10000);
