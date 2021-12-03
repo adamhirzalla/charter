@@ -11,13 +11,13 @@ const addMarker = (position, map) => {
       draggable: true,
       animation: google.maps.Animation.BOUNCE,
       icon: {
-        url: $('input:checked').val(),
+        url: $('#icon option:selected').val(),
         scaledSize: new google.maps.Size(40, 55)
       }
     });
   }
   window.googleMarker.setIcon({
-    url: $('input:checked').val(),
+    url: $('#icon option:selected').val(),
     scaledSize: new google.maps.Size(40, 55)
   });
   window.googleMarker.setPosition(position);

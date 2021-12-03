@@ -59,5 +59,9 @@ const getIcon = (path) => {
       return 'pokeball';
     case '/images/icons/poke-marker.svg':
       return 'default';
+    case '/images/icons/totoro.gif':
+      return 'default';
+    case '/images/icons/charmander.gif':
+      return 'default';
   }
 };
