@@ -1,22 +1,32 @@
-// All Colors Here!
-$blue: #0075BE;
-$yellow: #FFCC00;
-$red: #FB1B1B;
+/*********
+* Colors *
+*********/
+$blue: #0d6efd;
+$yellow: #ffc107;
+$red: #dc3545;
 
 // Whites
 $white-100: #FFFFFF;
 $white-200: #CECECE;
 $white-300: #B1B1B1;
 
-// Bootstrap overrides
-.btn-primary {
-  background-color: $blue;
-}
+// Dark Mode Color Scheme
+// Cool Grey
+$cool-grey-50: #F5F7FA;
+$cool-grey-100: #E4E7EB;
+$cool-grey-200: #CBD2D9;
+$cool-grey-300: #9AA5B1;
+$cool-grey-400: #7B8794;
+$cool-grey-500: #616E7C;
+$cool-grey-600: #52606D;
+$cool-grey-700: #3E4C59;
+$cool-grey-800: #323F4B;
+$cool-grey-900: #1F2933;
 
 // Navbar Color
 body {
   header {
-    background-color: $blue;
+    background-color: #212529;
     
     // Logo Colors
     .navbar-brand {
@@ -34,6 +44,10 @@ body {
 // Map Card Color
 .map-card {
   background-color: $white-100;
+  h5,
+  p {
+    color: $cool-grey-900;
+  }
 }
 
 // Profile Card Colors
@@ -43,4 +57,16 @@ body {
 
 .profile-card {
   background-color: $white-100;
+}
+
+
+// Map Info Card
+.map-info {
+  background-color: $white-100;
+}
+
+
+//Bootstrap Shadow Override
+.shadow-lg {
+  box-shadow: 0 1rem 3rem $cool-grey-200 !important;
 }
