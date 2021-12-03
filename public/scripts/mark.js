@@ -6,7 +6,7 @@ const mark = (googleMap) => {
 
 const addMarker = (position, map) => {
   if (!window.googleMarker) {
-    $('#edit.map')[0].reset();
+    $('#edit-map')[0].reset();
     if (window.lastInfoWindow) {
       window.lastInfoWindow.close();
       window.selectedMarker = null;
