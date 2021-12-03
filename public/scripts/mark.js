@@ -21,6 +21,10 @@ const addMarker = (position, map) => {
         scaledSize: new google.maps.Size(40, 55)
       },
     });
+    window.googleMarker.addListener("drag", (event) => {
+      $('#lat').val(Math.round(window.googleMarker.getPosition().toJSON().lat * 10000) / 10000);
+      $('#long').val(Math.round(window.googleMarker.getPosition().toJSON().lng * 10000) / 10000);
+    });
   }
   if ($(`#icon`).val() !== 'default') {
     window.googleMarker.setIcon({

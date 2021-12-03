@@ -21,7 +21,7 @@ const drawPins = (pins, map) => {
 const addInfoWindow = (marker, map) => {
   const { pin } = marker;
   const content = `
-  <div class="card" style="width: 150px;">
+  <div class="card" style="width: 300px;">
   <img class="card-img-top" src=${pin.img} alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">${pin.title}</h5>
@@ -59,7 +59,7 @@ const addInfoWindow = (marker, map) => {
     const icon = getIcon(pin.icon);
     $('#title').val(pin.title);
     $('#description').val(pin.description);
-    $('#image-url').val(pin.img);
+    $('#img').val(pin.img);
     $('#lat').val(Math.round(marker.getPosition().toJSON().lat * 10000) / 10000);
     $('#long').val(Math.round(marker.getPosition().toJSON().lng * 10000) / 10000);
     $(`#icon`).val(pin.icon);
@@ -68,15 +68,15 @@ const addInfoWindow = (marker, map) => {
 
 const getIcon = (path) => {
   switch (path) {
-    case '/images/icons/larry.gif':
-      return 'larry';
-    case '/images/icons/pokeball.svg':
-      return 'pokeball';
-    case '/images/icons/poke-marker.svg':
-      return 'default';
-    case '/images/icons/totoro.gif':
-      return 'default';
-    case '/images/icons/charmander.gif':
-      return 'default';
+  case '/images/icons/larry.gif':
+    return 'larry';
+  case '/images/icons/pokeball.svg':
+    return 'pokeball';
+  case '/images/icons/poke-marker.svg':
+    return 'default';
+  case '/images/icons/totoro.gif':
+    return 'default';
+  case '/images/icons/charmander.gif':
+    return 'default';
   }
 };
