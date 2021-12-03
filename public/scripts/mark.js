@@ -6,13 +6,7 @@ const mark = (googleMap) => {
 
 const addMarker = (position, map) => {
   if (!window.googleMarker) {
-
-    $('#title').val('');
-    $('#lat').val('');
-    $('#long').val('');
-    $('#description').val('');
-    $('#image-url').val('');
-
+    $('#edit.map')[0].reset();
     if (window.lastInfoWindow) {
       window.lastInfoWindow.close();
       window.selectedMarker = null;
