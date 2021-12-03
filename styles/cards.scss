@@ -4,6 +4,11 @@
 .map-card {
   width: 80%; 
   height: 80vh;
+  transition: all .1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+  }
 }
 
 .map-card-small {
@@ -18,14 +23,12 @@
   width: 380px;
   border: none;
   border-radius: 15px;
-  background-color: #fff;
   position: relative;
   min-height: 50vh;
 }
 
 .upper {
   height: 100px;
-  background-color: #FB1B1B;
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
