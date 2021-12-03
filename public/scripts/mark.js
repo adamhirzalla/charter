@@ -6,6 +6,12 @@ const mark = (googleMap) => {
 
 const addMarker = (position, map) => {
   if (!window.googleMarker) {
+    $('#edit-map')[0].reset();
+    if (window.lastInfoWindow) {
+      window.lastInfoWindow.close();
+      window.selectedMarker = null;
+    }
+
     window.googleMarker = new google.maps.Marker({
       map,
       draggable: true,

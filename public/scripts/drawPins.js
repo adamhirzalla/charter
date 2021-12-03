@@ -38,6 +38,18 @@ const addInfoWindow = (marker, map) => {
     }
     window.lastInfoWindow = infoWindow;
 
+    if (window.googleMarker) {
+      window.googleMarker.setMap(null);
+      window.googleMarker = null;
+    }
+
+    window.selectedMarker.addListener("drag", (event) => {
+      $('#lat').val(Math.round(window.selectedMarker.getPosition().toJSON().lat * 10000) / 10000);
+      $('#long').val(Math.round(window.selectedMarker.getPosition().toJSON().lng * 10000) / 10000);
+    }
+
+    );
+
     marker.setDraggable(true);
     infoWindow.open({
       map,
@@ -47,7 +59,7 @@ const addInfoWindow = (marker, map) => {
     const icon = getIcon(pin.icon);
     $('#title').val(pin.title);
     $('#description').val(pin.description);
-    $('#image-url').val(pin.image);
+    $('#image-url').val(pin.img);
     $('#lat').val(Math.round(marker.getPosition().toJSON().lat * 10000) / 10000);
     $('#long').val(Math.round(marker.getPosition().toJSON().lng * 10000) / 10000);
     $(`#icon`).val(pin.icon);
@@ -56,11 +68,15 @@ const addInfoWindow = (marker, map) => {
 
 const getIcon = (path) => {
   switch (path) {
-  case '/images/icons/larry.gif':
-    return 'default';
-  case '/images/icons/pokeball.svg':
-    return 'pokeball';
-  case '/images/icons/poke-marker.svg':
-    return 'poke-marker';
+    case '/images/icons/larry.gif':
+      return 'larry';
+    case '/images/icons/pokeball.svg':
+      return 'pokeball';
+    case '/images/icons/poke-marker.svg':
+      return 'default';
+    case '/images/icons/totoro.gif':
+      return 'default';
+    case '/images/icons/charmander.gif':
+      return 'default';
   }
 };
