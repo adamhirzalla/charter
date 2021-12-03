@@ -1,6 +1,6 @@
 INSERT INTO maps (user_id, title, description, is_public, theme)
 VALUES
-(1, 'Adams Map1', 'Awesome map description1', true, 'default'),
+(1, 'Places to visit', 'Awesome map description1', true, 'default'),
 (1, 'Adams Map2', 'map 2 description', true, 'pokemon'),
 (1, 'Adams definitelyPublic Map', 'Awesome definitelyPublic map description', true, 'pokemon'),
 (2, 'Leons Map1', 'leons map description', true, 'default'),
