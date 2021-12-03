@@ -6,6 +6,12 @@ const mark = (googleMap) => {
 
 const addMarker = (position, map) => {
   if (!window.googleMarker) {
+    $('#edit-map')[0].reset();
+    if (window.lastInfoWindow) {
+      window.lastInfoWindow.close();
+      window.selectedMarker = null;
+    }
+
     window.googleMarker = new google.maps.Marker({
       map,
       draggable: true,
@@ -14,6 +20,10 @@ const addMarker = (position, map) => {
         url: $(`#icon`).val(),
         scaledSize: new google.maps.Size(40, 55)
       },
+    });
+    window.googleMarker.addListener("drag", (event) => {
+      $('#lat').val(Math.round(window.googleMarker.getPosition().toJSON().lat * 10000) / 10000);
+      $('#long').val(Math.round(window.googleMarker.getPosition().toJSON().lng * 10000) / 10000);
     });
   }
   if ($(`#icon`).val() !== 'default') {

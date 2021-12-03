@@ -21,8 +21,13 @@ const drawPins = (pins, map) => {
 const addInfoWindow = (marker, map) => {
   const { pin } = marker;
   const content = `
-  <h1>${pin.title}</h1>
-  <p>${pin.description}</p>
+  <div class="card" style="width: 300px;">
+  <img class="card-img-top" src=${pin.img} alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">${pin.title}</h5>
+    <p class="card-text">${pin.description}</p>
+  </div>
+</div>
   `;
   const infoWindow = new google.maps.InfoWindow({ content });
   marker.addListener("click", () => {
@@ -33,6 +38,18 @@ const addInfoWindow = (marker, map) => {
     }
     window.lastInfoWindow = infoWindow;
 
+    if (window.googleMarker) {
+      window.googleMarker.setMap(null);
+      window.googleMarker = null;
+    }
+
+    window.selectedMarker.addListener("drag", (event) => {
+      $('#lat').val(Math.round(window.selectedMarker.getPosition().toJSON().lat * 10000) / 10000);
+      $('#long').val(Math.round(window.selectedMarker.getPosition().toJSON().lng * 10000) / 10000);
+    }
+
+    );
+
     marker.setDraggable(true);
     infoWindow.open({
       map,
@@ -42,7 +59,7 @@ const addInfoWindow = (marker, map) => {
     const icon = getIcon(pin.icon);
     $('#title').val(pin.title);
     $('#description').val(pin.description);
-    $('#image-url').val(pin.image);
+    $('#img').val(pin.img);
     $('#lat').val(Math.round(marker.getPosition().toJSON().lat * 10000) / 10000);
     $('#long').val(Math.round(marker.getPosition().toJSON().lng * 10000) / 10000);
     $(`#icon`).val(pin.icon);
@@ -52,10 +69,14 @@ const addInfoWindow = (marker, map) => {
 const getIcon = (path) => {
   switch (path) {
   case '/images/icons/larry.gif':
-    return 'default';
+    return 'larry';
   case '/images/icons/pokeball.svg':
     return 'pokeball';
   case '/images/icons/poke-marker.svg':
-    return 'poke-marker';
+    return 'default';
+  case '/images/icons/totoro.gif':
+    return 'default';
+  case '/images/icons/charmander.gif':
+    return 'default';
   }
 };
