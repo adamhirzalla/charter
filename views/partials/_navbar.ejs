@@ -12,8 +12,8 @@
 
       <!-- Profile Button -->
       <div class="dropdown show ml-2">
-        <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <% if (userId){%>
+        <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if (userId) {%>
             Menu
           <% } else { %>
             Login
@@ -23,14 +23,15 @@
         <!-- Dropdown items -->
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
-          <% if (userId){%>
+          <% if (userId) {%>
             <a class="dropdown-item" href="/maps/create">Create map</a>
           <a class="dropdown-item" href="/users/<%=userId%>">My Profile</a>
           <a class="dropdown-item" href="/logout">Logout</a>
           <% } else { %>
-                <a class="dropdown-item" href="/login/1">as Adam</a>
-                <a class="dropdown-item" href="/login/2">as Leon</a>
-                <a class="dropdown-item" href="/login/3">as Joseph</a>
+            <a class="dropdown-item" href="/login/4">as Demo</a>
+            <a class="dropdown-item" href="/login/1">as Adam</a>
+            <a class="dropdown-item" href="/login/2">as Leon</a>
+            <a class="dropdown-item" href="/login/3">as Joseph</a>
           <% } %>
         </div>
       </div>

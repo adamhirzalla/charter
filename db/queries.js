@@ -78,11 +78,11 @@ const getAllMapPins = (mapId, options) => {
 };
 
 const addPin = (userId, mapId, data) => {
-  const { title, lat, long, icon, description } = data;
-  const values = [mapId, userId, title, lat, long, icon, description];
+  const { title, lat, long, icon, description, img } = data;
+  const values = [mapId, userId, title, lat, long, icon, description, img];
   const query = `
-    INSERT INTO pins (map_id, user_id, title, lat, long, icon, description)
-    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
+    INSERT INTO pins (map_id, user_id, title, lat, long, icon, description, img)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
   return db
     .query(query, values)
     .then(data => data.rows[0])
