@@ -13,13 +13,15 @@ const getUser = (userId) => {
 };
 
 const getAllMaps = (options = {}, limit = 5) => {
-  let {id, user_id, title, description, is_public} = options;
+  // let {id, user_id, title, description, is_public} = options;
+  let { search } = options;
   let query = `SELECT * FROM maps `;
   const values = [];
 
-  if (title) {
-    values.push(`%${title}%`);
-    query += `WHERE LOWER(title) LIKE LOWER($${values.length}) `;
+  if (search) {
+    values.push(`%${search}%`);
+    query += `WHERE LOWER(title) LIKE LOWER($${values.length})
+    OR LOWER(description) LIKE LOWER($${values.length})`;
   }
 
   return db
