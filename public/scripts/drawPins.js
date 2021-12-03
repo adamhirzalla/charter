@@ -19,14 +19,25 @@ const drawPins = (pins, map) => {
 };
 
 const addInfoWindow = (marker, map) => {
-  const {pin} = marker;
+  const { pin } = marker;
   const content = `
-  <h1>${pin.title}</h1>
-  <p>${pin.description}</p>
+  <div class="card" style="width: 150px;">
+  <img class="card-img-top" src=${pin.img} alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">${pin.title}</h5>
+    <p class="card-text">${pin.description}</p>
+  </div>
+</div>
   `;
-  const infoWindow = new google.maps.InfoWindow({content});
+  const infoWindow = new google.maps.InfoWindow({ content });
   marker.addListener("click", () => {
     window.selectedMarker = marker;
+
+    if (window.lastInfoWindow) {
+      window.lastInfoWindow.close();
+    }
+    window.lastInfoWindow = infoWindow;
+
     marker.setDraggable(true);
     infoWindow.open({
       map,
@@ -39,18 +50,17 @@ const addInfoWindow = (marker, map) => {
     $('#image-url').val(pin.image);
     $('#lat').val(Math.round(marker.getPosition().toJSON().lat * 10000) / 10000);
     $('#long').val(Math.round(marker.getPosition().toJSON().lng * 10000) / 10000);
-    $(`#${icon}`).prop('checked', true);
+    $(`#icon`).val(pin.icon);
   });
 };
+
 const getIcon = (path) => {
   switch (path) {
   case '/images/icons/larry.gif':
-    return 'larry';
+    return 'default';
   case '/images/icons/pokeball.svg':
     return 'pokeball';
   case '/images/icons/poke-marker.svg':
-    return 'default';
-  case '/images/icons/shop.svg':
-    return 'store';
+    return 'poke-marker';
   }
 };
